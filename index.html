@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CHEZ Bibi Steinmetz</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ========================================
+       HEADER / NAVIGATION
+  ======================================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <!-- Logo -->
+      <a href="#" class="header__logo">
+        <span class="logo-icon">🍽</span>
+        <span class="logo-text">CHEZ Bibi Steinmetz</span>
+      </a>
+
+      <!-- Navigation principale -->
+      <nav class="header__nav" id="mainNav">
+        <ul class="nav__list">
+          <li class="nav__item nav__item--dropdown">
+            <a href="#">Accueil <i class="fa-solid fa-chevron-down fa-xs"></i></a>
+            <ul class="dropdown">
+              <li><a href="#">Bienvenue</a></li>
+              <li><a href="#">Notre histoire</a></li>
+            </ul>
+          </li>
+          
+          <li class="nav__item nav__item--dropdown">
+            <a href="#">Menu <i class="fa-solid fa-chevron-down fa-xs"></i></a>
+            <ul class="dropdown">
+              <li><a href="#">Menu du jour</a></li>
+              <li><a href="#">Carte complète</a></li>
+            </ul>
+          </li>
+          
+          <li class="nav__item">
+            <a href="#verbas">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Actions header (compte + panier) -->
+      <div class="header__actions">
+        <a href="#" class="header__btn" aria-label="Mon compte">
+          <i class="fa-regular fa-user"></i>
+        </a>
+        <a href="#" class="header__btn header__btn--cart" aria-label="Panier">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count">0</span>
+        </a>
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================
+       HERO SECTION
+  ======================================== -->
+  <section class="hero">
+    <div class="hero__overlay"></div>
+    <img src="image1.jpeg" alt="Fond du restaurant" class="hero__bg" data-placeholder=""/>
+    <div class="container hero__content">
+      <p class="hero__eyebrow">Bienvenue Chez Bibi Steinmetz</p>
+      <h1 class="hero__title">Notre <em>Menu</em></h1>
+      <!-- Fil d'Ariane -->
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="#">Accueil</a>
+        <span class="breadcrumb__sep"><i class="fa-solid fa-chevron-right fa-xs"></i></span>
+        <span> Notre Menu </span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SECTION MENU
+  ======================================== -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+
+      <!-- Filtres catégories -->
+      <div class="menu-filters" role="tablist" aria-label="Catégories du menu">
+        <button class="filter-btn filter-btn--active" data-filter="all" role="tab">
+          <i class="fa-solid fa-utensils"></i> Tous
+        </button>
+        <button class="filter-btn" data-filter="drinks" role="tab">
+          <i class="fa-solid fa-martini-glass-citrus"></i> Boissons
+        </button>
+        <button class="filter-btn" data-filter="pizza" role="tab">
+          <i class="fa-solid fa-pizza-slice"></i> fast food
+        </button>
+        <button class="filter-btn" data-filter="salad" role="tab">
+          <i class="fa-solid fa-leaf"></i> Salade
+        </button>
+        <button class="filter-btn" data-filter="spicy" role="tab">
+          <i class="fa-solid fa-fire"></i> classiques
+        </button>
+        <button class="filter-btn" data-filter="sweets" role="tab">
+          <i class="fa-solid fa-cake-candles"></i> Sucreries
+        </button>
+        <a href="#" class="btn btn--primary menu-filters__cta">Voir tout</a>
+      </div>
+
+      <!-- Grille des plats -->
+      <div class="menu-grid" id="menuGrid">
+
+        <!-- ---- CARTE 1 ---- -->
+        <article class="menu-card" data-category="spicy">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">20%</span>
+            <img src="ATT.jpeg" alt=" " class="menu-card__img" data-placeholder=" "/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 5.00</span>
+            </div>
+            <h3 class="menu-card__title">attieke poisson alloco</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">2500Fcfa</span>
+          </div>
+        </article>
+
+        <!-- ---- CARTE 2 ---- -->
+        <article class="menu-card" data-category="spicy">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">30%</span>
+            <img src="atss.jpeg" alt=" " class="menu-card__img" data-placeholder=" "/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 5.00</span>
+            </div>
+            <h3 class="menu-card__title">atassi poisson </h3>
+            <p class="menu-card__desc">accompagné de alloco fromage et oeuf </p>
+            <span class="menu-card__price">2500Fcfa</span>
+          </div>
+        </article>
+
+        <!-- ---- CARTE 3 ---- -->
+        <article class="menu-card" data-category="pizza">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">20%</span>
+            <img src="chawarma.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
+            </div>
+            <h3 class="menu-card__title">CHAWARMA</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">2500Fcfa/2000Fcfa</span>
+          </div>
+        </article>
+
+        <!-- ---- CARTE 4 ---- -->
+        <article class="menu-card" data-category="pizza">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">8%</span>
+            <img src="paninicheese.jpeg" alt=" " class="menu-card__img" data-placeholder=" "/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">Chesse panini</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">1500Fcfa</span>
+          </div>
+        </article>
+
+        <!-- ---- CARTE 5 ---- -->
+        <article class="menu-card" data-category="spicy">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">17%</span>
+            <img src="RGAILERON.jpeg" alt=" " class="menu-card__img" data-placeholder=" "/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 3.00</span>
+            </div>
+            <h3 class="menu-card__title">Riz au gras aileron</h3>
+            <p class="menu-card__desc">   </p>
+            <span class="menu-card__price">2000Fcfa</span>
+          </div>
+        </article>
+
+        <!-- ---- CARTE 6 ---- -->
+        <article class="menu-card" data-category="spicy">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">8%</span>
+            <img src="RGPOISSON.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.80</span>
+            </div>
+            <h3 class="menu-card__title">RIZ AU GRAS poisson</h3>
+            <p class="menu-card__desc">.</p>
+            <span class="menu-card__price">2000Fcfa</span>
+          </div>
+        </article>
+
+        <!-- ---- CARTE 7 ---- -->
+        <article class="menu-card" data-category="spicy">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">8%</span>
+            <img src="ccaileron.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
+            </div>
+            <h3 class="menu-card__title">couscous aileron</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">2000Fcfa</span>
+          </div>
+        </article>
+
+        <!-- ---- CARTE 8 ---- -->
+        <article class="menu-card" data-category="spicy">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">17%</span>
+            <img src="akassa.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
+            </div>
+            <h3 class="menu-card__title">akassa moyo</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">1000Fcfa</span>
+          </div>
+        </article>
+
+        <!-- ---- CARTE 9 ---- -->
+        <article class="menu-card" data-category="drinks">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="pasteque.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">jus de pasteque</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">600Fcfa</span>
+          </div>
+        </article>
+
+
+         <!-- ---- CARTE 10---- -->
+        <article class="menu-card" data-category="drinks">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="ananas.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">jus d'ananas</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">600Fcfa</span>
+          </div>
+        </article>
+
+
+         <!-- ---- CARTE 11 ---- -->
+        <article class="menu-card" data-category="drinks">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="gingembre.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">jus de gingembre</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">600Fcfa</span>
+          </div>
+        </article>
+
+
+         <!-- ---- CARTE 12 ---- -->
+        <article class="menu-card" data-category="drinks">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="baobab.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">jus de baobab</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">600Fcfa</span>
+          </div>
+        </article>
+         <!-- ---- CARTE 13 ---- -->
+        <article class="menu-card" data-category="drinks">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="citronelle.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">citronelle</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">600Fcfa</span>
+          </div>
+        </article>
+         <!-- ---- CARTE 14 ---- -->
+        <article class="menu-card" data-category="pizza">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="sandwich.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">sandwich</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">1100Fcfa</span>
+          </div>
+        </article>
+         <!-- ---- CARTE 15---- -->
+        <article class="menu-card" data-category="spicy">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="eba.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">piron</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">2000Fcfa</span>
+          </div>
+        </article>
+         <!-- ---- CARTE 16---- -->
+        <article class="menu-card" data-category="salad">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="top-view-homemade-delicious-salad-with-many-ingredients-plate-black-green-mix-colors-background.jpg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">Salade</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">2000Fcfa</span>
+          </div>
+        </article>
+         <!-- ---- CARTE 17---- -->
+        <article class="menu-card" data-category="drinks">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="tamarin.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <div class="menu-card__overlay">
+              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">tamarin</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">600Fcfa</span>
+          </div>
+        </article>
+        
+        
+        
+
+
+
+      </div><!-- /menu-grid -->
+    </div>
+  </section>
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
+  <footer class="footer" id="verbas">
+    <div class="container footer__grid">
+
+      <!-- Colonne 1 — Contact -->
+      <div class="footer__col">
+        <h4 class="footer__heading">Nous Contacter</h4>
+        <ul class="footer__contact-list">
+          <li>
+            <i class="fa-solid fa-location-dot footer__icon"></i>
+            <span><br></span>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone footer__icon"></i>
+            <span>+229 0197601568<br>+229 0196175912</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope footer__icon"></i>
+            <span>
+              <a href="dam.bibi3@gmail.com">mail</a><br>
+              <a href="mailto:info@exam">mail</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Colonne 2 — Liens -->
+      <div class="footer__col">
+        <h4 class="footer__heading">Nos Liens</h4>
+        <ul class="footer__links">
+          <li><a href="#">À propos</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Équipe</a></li>
+          <li><a href="#">Détails équipe</a></li>
+          <li><a href="#">Témoignages</a></li>
+        </ul>
+      </div>
+
+      <!-- Colonne 3 — Services -->
+      <div class="footer__col">
+        <h4 class="footer__heading">Nos Services</h4>
+        <ul class="footer__links">
+          <li><a href="#">Équipe exceptionnelle</a></li>
+          <li><a href="#">Service à table</a></li>
+          <li><a href="#">Prise de commande</a></li>
+          <li><a href="#">Livraison rapide</a></li>
+          <li><a href="#">Nourriture saine</a></li>
+        </ul>
+      </div>
+
+      <!-- Colonne 4 — Aide + Réseaux sociaux -->
+      <div class="footer__col">
+        <h4 class="footer__heading">Centre d'aide</h4>
+        <ul class="footer__links">
+          <li><a href="#">Service client</a></li>
+          <li><a href="#">Détail du service</a></li>
+          <li><a href="#">Bientôt disponible</a></li>
+          <li><a href="#">En maintenance</a></li>
+          <li><a href="#"></a></li>
+        </ul>
+
+        <!-- Réseaux sociaux -->
+        <div class="footer__social">
+          <h4 class="footer__heading footer__heading--social">Suivez-nous</h4>
+          <div class="social-links">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/share/1UNjU7PYBx/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--facebook" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/bibisteinmetz1?igsh=YnMxNjMzOW91Y3I0&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--instagram" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@bibisteinmetz24?_r=1&_t=ZS-95FmIN9PRcD" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--tiktok" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <!-- Twitter / X -->
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--twitter" aria-label="Twitter / X">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <!-- YouTube -->
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--youtube" aria-label="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /footer__grid -->
+
+    <!-- Barre de bas de page -->
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copy"></p>
+        <p class="footer__website"></p>
+        <p class="footer__credit"> <a href="#"></a></p>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Bouton retour en haut -->
+  <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ========================================
+       SCRIPTS
+  ======================================== -->
+  <script>
+    /* --- Hamburger mobile --- */
+    const hamburger = document.getElementById('hamburger');
+    const mainNav   = document.getElementById('mainNav');
+    hamburger.addEventListener('click', () => {
+      mainNav.classList.toggle('is-open');
+      hamburger.classList.toggle('is-active');
+    });
+
+    /* --- Header sticky shadow --- */
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('header--scrolled', window.scrollY > 50);
+    });
+
+    /* --- Filtres du menu --- */
+    /* --- Filtres du menu --- */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const menuCards  = document.querySelectorAll('.menu-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
+    btn.classList.add('filter-btn--active');
+
+    const filter = btn.dataset.filter;
+    menuCards.forEach(card => {
+      // "all" affiche TOUT, sinon on vérifie la catégorie
+      if (filter === 'all') {
+        card.style.display = '';
+      } else {
+        card.style.display = card.dataset.category === filter ? '' : 'none';
+      }
+    });
+  });
+});
+
+    /* --- Remplacement placeholder photos --- */
+    document.querySelectorAll('img[data-placeholder]').forEach(img => {
+      if (!img.src || img.src === window.location.href) {
+        img.alt = img.dataset.placeholder;
+        img.style.background = '#e8e0d5';
+        /* Affiche "PHOTO" en overlay si src vide */
+        const wrap = img.closest('.menu-card__img-wrap, .hero');
+        if (wrap && !wrap.querySelector('.ph-label')) {
+          const lbl = document.createElement('span');
+          lbl.className = 'ph-label';
+          lbl.textContent = 'PHOTO';
+          wrap.appendChild(lbl);
+        }
+      }
+    });
+
+    /* --- Scroll to top --- */
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+</body>
+</html>
