@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CHEZ Bibi Steinmetz</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
@@ -17,14 +15,10 @@
   ======================================== -->
   <header class="header" id="header">
     <div class="container header__inner">
-
-      <!-- Logo -->
       <a href="#" class="header__logo">
         <span class="logo-icon">🍽</span>
         <span class="logo-text">CHEZ Bibi Steinmetz</span>
       </a>
-
-      <!-- Navigation principale -->
       <nav class="header__nav" id="mainNav">
         <ul class="nav__list">
           <li class="nav__item nav__item--dropdown">
@@ -34,7 +28,6 @@
               <li><a href="#">Notre histoire</a></li>
             </ul>
           </li>
-          
           <li class="nav__item nav__item--dropdown">
             <a href="#">Menu <i class="fa-solid fa-chevron-down fa-xs"></i></a>
             <ul class="dropdown">
@@ -42,14 +35,11 @@
               <li><a href="#">Carte complète</a></li>
             </ul>
           </li>
-          
           <li class="nav__item">
             <a href="#verbas">Contact</a>
           </li>
         </ul>
       </nav>
-
-      <!-- Actions header (compte + panier) -->
       <div class="header__actions">
         <a href="#" class="header__btn" aria-label="Mon compte">
           <i class="fa-regular fa-user"></i>
@@ -58,12 +48,10 @@
           <i class="fa-solid fa-bag-shopping"></i>
           <span class="cart-count">0</span>
         </a>
-        <!-- Hamburger (mobile) -->
         <button class="hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
       </div>
-
     </div>
   </header>
 
@@ -72,15 +60,14 @@
   ======================================== -->
   <section class="hero">
     <div class="hero__overlay"></div>
-    <img src="image1.jpeg" alt="Fond du restaurant" class="hero__bg" data-placeholder=""/>
+    <img src="image1.jpeg" alt="Fond du restaurant" class="hero__bg"/>
     <div class="container hero__content">
       <p class="hero__eyebrow">Bienvenue Chez Bibi Steinmetz</p>
       <h1 class="hero__title">Notre <em>Menu</em></h1>
-      <!-- Fil d'Ariane -->
       <nav class="breadcrumb" aria-label="Fil d'Ariane">
         <a href="#">Accueil</a>
         <span class="breadcrumb__sep"><i class="fa-solid fa-chevron-right fa-xs"></i></span>
-        <span> Notre Menu </span>
+        <span>Notre Menu</span>
       </nav>
     </div>
   </section>
@@ -100,13 +87,13 @@
           <i class="fa-solid fa-martini-glass-citrus"></i> Boissons
         </button>
         <button class="filter-btn" data-filter="pizza" role="tab">
-          <i class="fa-solid fa-pizza-slice"></i> fast food
+          <i class="fa-solid fa-pizza-slice"></i> Fast food
         </button>
         <button class="filter-btn" data-filter="salad" role="tab">
           <i class="fa-solid fa-leaf"></i> Salade
         </button>
         <button class="filter-btn" data-filter="spicy" role="tab">
-          <i class="fa-solid fa-fire"></i> classiques
+          <i class="fa-solid fa-fire"></i> Classiques
         </button>
         <button class="filter-btn" data-filter="sweets" role="tab">
           <i class="fa-solid fa-cake-candles"></i> Sucreries
@@ -118,98 +105,103 @@
       <div class="menu-grid" id="menuGrid">
 
         <!-- ---- CARTE 1 ---- -->
-        <article class="menu-card" data-category="spicy">
+        <article class="menu-card" data-category="spicy" data-nom="Attieke poisson alloco">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">20%</span>
-            <img src="ATT.jpeg" alt=" " class="menu-card__img" data-placeholder=" "/>
+            <img src="ATT.jpeg" alt="Attieke poisson alloco" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 5.00</span>
             </div>
-            <h3 class="menu-card__title">attieke poisson alloco</h3>
+            <h3 class="menu-card__title">Attieke poisson alloco</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2500Fcfa</span>
+            <span class="menu-card__price">2500 Fcfa</span>
           </div>
         </article>
 
         <!-- ---- CARTE 2 ---- -->
-        <article class="menu-card" data-category="spicy">
+        <article class="menu-card" data-category="spicy" data-nom="Atassi poisson">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">30%</span>
-            <img src="atss.jpeg" alt=" " class="menu-card__img" data-placeholder=" "/>
+            <img src="atss.jpeg" alt="Atassi poisson" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 5.00</span>
             </div>
-            <h3 class="menu-card__title">atassi poisson </h3>
-            <p class="menu-card__desc">accompagné de alloco fromage et oeuf </p>
-            <span class="menu-card__price">2500Fcfa</span>
+            <h3 class="menu-card__title">Atassi poisson</h3>
+            <p class="menu-card__desc">Accompagné de alloco, fromage et oeuf</p>
+            <span class="menu-card__price">2500 Fcfa</span>
           </div>
         </article>
 
         <!-- ---- CARTE 3 ---- -->
-        <article class="menu-card" data-category="pizza">
+        <article class="menu-card" data-category="pizza" data-nom="Chawarma">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">20%</span>
-            <img src="chawarma.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="chawarma.jpeg" alt="Chawarma" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
             </div>
-            <h3 class="menu-card__title">CHAWARMA</h3>
+            <h3 class="menu-card__title">Chawarma</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2500Fcfa/2000Fcfa</span>
+            <span class="menu-card__price">2500 Fcfa / 2000 Fcfa</span>
           </div>
         </article>
 
         <!-- ---- CARTE 4 ---- -->
-        <article class="menu-card" data-category="pizza">
+        <article class="menu-card" data-category="pizza" data-nom="Cheese Panini">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">8%</span>
-            <img src="paninicheese.jpeg" alt=" " class="menu-card__img" data-placeholder=" "/>
+            <img src="paninicheese.jpeg" alt="Cheese Panini" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
             </div>
-            <h3 class="menu-card__title">Chesse panini</h3>
+            <h3 class="menu-card__title">Cheese Panini</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">1500Fcfa</span>
+            <span class="menu-card__price">1500 Fcfa</span>
           </div>
         </article>
 
         <!-- ---- CARTE 5 ---- -->
-        <article class="menu-card" data-category="spicy">
+        <article class="menu-card" data-category="spicy" data-nom="Riz au gras aileron">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">17%</span>
-            <img src="RGAILERON.jpeg" alt=" " class="menu-card__img" data-placeholder=" "/>
+            <img src="RGAILERON.jpeg" alt="Riz au gras aileron" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
@@ -217,229 +209,241 @@
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 3.00</span>
             </div>
             <h3 class="menu-card__title">Riz au gras aileron</h3>
-            <p class="menu-card__desc">   </p>
-            <span class="menu-card__price">2000Fcfa</span>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">2000 Fcfa</span>
           </div>
         </article>
 
         <!-- ---- CARTE 6 ---- -->
-        <article class="menu-card" data-category="spicy">
+        <article class="menu-card" data-category="spicy" data-nom="Riz au gras poisson">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">8%</span>
-            <img src="RGPOISSON.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="RGPOISSON.jpeg" alt="Riz au gras poisson" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.80</span>
             </div>
-            <h3 class="menu-card__title">RIZ AU GRAS poisson</h3>
-            <p class="menu-card__desc">.</p>
-            <span class="menu-card__price">2000Fcfa</span>
+            <h3 class="menu-card__title">Riz au gras poisson</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">2000 Fcfa</span>
           </div>
         </article>
 
         <!-- ---- CARTE 7 ---- -->
-        <article class="menu-card" data-category="spicy">
+        <article class="menu-card" data-category="spicy" data-nom="Couscous aileron">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">8%</span>
-            <img src="ccaileron.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="ccaileron.jpeg" alt="Couscous aileron" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
             </div>
-            <h3 class="menu-card__title">couscous aileron</h3>
+            <h3 class="menu-card__title">Couscous aileron</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2000Fcfa</span>
+            <span class="menu-card__price">2000 Fcfa</span>
           </div>
         </article>
 
         <!-- ---- CARTE 8 ---- -->
-        <article class="menu-card" data-category="spicy">
+        <article class="menu-card" data-category="spicy" data-nom="Akassa moyo">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">17%</span>
-            <img src="akassa.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="akassa.jpeg" alt="Akassa moyo" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
             </div>
-            <h3 class="menu-card__title">akassa moyo</h3>
+            <h3 class="menu-card__title">Akassa moyo</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">1000Fcfa</span>
+            <span class="menu-card__price">1000 Fcfa</span>
           </div>
         </article>
 
         <!-- ---- CARTE 9 ---- -->
-        <article class="menu-card" data-category="drinks">
+        <article class="menu-card" data-category="drinks" data-nom="Jus de pastèque">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">10%</span>
-            <img src="pasteque.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="pasteque.jpeg" alt="Jus de pastèque" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
             </div>
-            <h3 class="menu-card__title">jus de pasteque</h3>
+            <h3 class="menu-card__title">Jus de pastèque</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600Fcfa</span>
+            <span class="menu-card__price">600 Fcfa</span>
           </div>
         </article>
 
-
-         <!-- ---- CARTE 10---- -->
-        <article class="menu-card" data-category="drinks">
+        <!-- ---- CARTE 10 ---- -->
+        <article class="menu-card" data-category="drinks" data-nom="Jus d'ananas">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">10%</span>
-            <img src="ananas.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="ananas.jpeg" alt="Jus d'ananas" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
             </div>
-            <h3 class="menu-card__title">jus d'ananas</h3>
+            <h3 class="menu-card__title">Jus d'ananas</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600Fcfa</span>
+            <span class="menu-card__price">600 Fcfa</span>
           </div>
         </article>
 
-
-         <!-- ---- CARTE 11 ---- -->
-        <article class="menu-card" data-category="drinks">
+        <!-- ---- CARTE 11 ---- -->
+        <article class="menu-card" data-category="drinks" data-nom="Jus de gingembre">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">10%</span>
-            <img src="gingembre.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="gingembre.jpeg" alt="Jus de gingembre" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
             </div>
-            <h3 class="menu-card__title">jus de gingembre</h3>
+            <h3 class="menu-card__title">Jus de gingembre</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600Fcfa</span>
+            <span class="menu-card__price">600 Fcfa</span>
           </div>
         </article>
 
+        <!-- ---- CARTE 12 ---- -->
+        <article class="menu-card" data-category="drinks" data-nom="Jus de baobab">
+          <div class="menu-card__img-wrap">
+            <span class="menu-card__badge">10%</span>
+            <img src="baobab.jpeg" alt="Jus de baobab" class="menu-card__img"/>
+            <div class="menu-card__overlay">
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta">
+              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
+            </div>
+            <h3 class="menu-card__title">Jus de baobab</h3>
+            <p class="menu-card__desc"></p>
+            <span class="menu-card__price">600 Fcfa</span>
+          </div>
+        </article>
 
-         <!-- ---- CARTE 12 ---- -->
-        <article class="menu-card" data-category="drinks">
+        <!-- ---- CARTE 13 ---- -->
+        <article class="menu-card" data-category="drinks" data-nom="Citronelle">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">10%</span>
-            <img src="baobab.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="citronelle.jpeg" alt="Citronelle" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
             </div>
-            <h3 class="menu-card__title">jus de baobab</h3>
+            <h3 class="menu-card__title">Citronelle</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600Fcfa</span>
+            <span class="menu-card__price">600 Fcfa</span>
           </div>
         </article>
-         <!-- ---- CARTE 13 ---- -->
-        <article class="menu-card" data-category="drinks">
+
+        <!-- ---- CARTE 14 ---- -->
+        <article class="menu-card" data-category="pizza" data-nom="Sandwich">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">10%</span>
-            <img src="citronelle.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="sandwich.jpeg" alt="Sandwich" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
             </div>
-            <h3 class="menu-card__title">citronelle</h3>
+            <h3 class="menu-card__title">Sandwich</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600Fcfa</span>
+            <span class="menu-card__price">1100 Fcfa</span>
           </div>
         </article>
-         <!-- ---- CARTE 14 ---- -->
-        <article class="menu-card" data-category="pizza">
+
+        <!-- ---- CARTE 15 ---- -->
+        <article class="menu-card" data-category="spicy" data-nom="Piron">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">10%</span>
-            <img src="sandwich.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="eba.jpeg" alt="Piron" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
             </div>
-            <h3 class="menu-card__title">sandwich</h3>
+            <h3 class="menu-card__title">Piron</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">1100Fcfa</span>
+            <span class="menu-card__price">2000 Fcfa</span>
           </div>
         </article>
-         <!-- ---- CARTE 15---- -->
-        <article class="menu-card" data-category="spicy">
+
+        <!-- ---- CARTE 16 ---- -->
+        <article class="menu-card" data-category="salad" data-nom="Salade">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">10%</span>
-            <img src="eba.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="top-view-homemade-delicious-salad-with-many-ingredients-plate-black-green-mix-colors-background.jpg" alt="Salade" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">piron</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2000Fcfa</span>
-          </div>
-        </article>
-         <!-- ---- CARTE 16---- -->
-        <article class="menu-card" data-category="salad">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="top-view-homemade-delicious-salad-with-many-ingredients-plate-black-green-mix-colors-background.jpg" alt="" class="menu-card__img" data-placeholder=""/>
-            <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
@@ -448,34 +452,31 @@
             </div>
             <h3 class="menu-card__title">Salade</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2000Fcfa</span>
+            <span class="menu-card__price">2000 Fcfa</span>
           </div>
         </article>
-         <!-- ---- CARTE 17---- -->
-        <article class="menu-card" data-category="drinks">
+
+        <!-- ---- CARTE 17 ---- -->
+        <article class="menu-card" data-category="drinks" data-nom="Tamarin">
           <div class="menu-card__img-wrap">
             <span class="menu-card__badge">10%</span>
-            <img src="tamarin.jpeg" alt="" class="menu-card__img" data-placeholder=""/>
+            <img src="tamarin.jpeg" alt="Tamarin" class="menu-card__img"/>
             <div class="menu-card__overlay">
-              <button class="menu-card__quick-add" aria-label="Ajouter au panier">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="#" onclick="commanderWhatsapp(this); return false;"
+                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
             </div>
           </div>
           <div class="menu-card__body">
             <div class="menu-card__meta">
               <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
             </div>
-            <h3 class="menu-card__title">tamarin</h3>
+            <h3 class="menu-card__title">Tamarin</h3>
             <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600Fcfa</span>
+            <span class="menu-card__price">600 Fcfa</span>
           </div>
         </article>
-        
-        
-        
-
-
 
       </div><!-- /menu-grid -->
     </div>
@@ -493,7 +494,7 @@
         <ul class="footer__contact-list">
           <li>
             <i class="fa-solid fa-location-dot footer__icon"></i>
-            <span><br></span>
+            <span>Cotonou, Bénin</span>
           </li>
           <li>
             <i class="fa-solid fa-phone footer__icon"></i>
@@ -501,10 +502,7 @@
           </li>
           <li>
             <i class="fa-solid fa-envelope footer__icon"></i>
-            <span>
-              <a href="dam.bibi3@gmail.com">mail</a><br>
-              <a href="mailto:info@exam">mail</a>
-            </span>
+            <span><a href="mailto:dam.bibi3@gmail.com">dam.bibi3@gmail.com</a></span>
           </li>
         </ul>
       </div>
@@ -541,31 +539,35 @@
           <li><a href="#">Détail du service</a></li>
           <li><a href="#">Bientôt disponible</a></li>
           <li><a href="#">En maintenance</a></li>
-          <li><a href="#"></a></li>
         </ul>
 
         <!-- Réseaux sociaux -->
         <div class="footer__social">
           <h4 class="footer__heading footer__heading--social">Suivez-nous</h4>
           <div class="social-links">
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/share/1UNjU7PYBx/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--facebook" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/1UNjU7PYBx/?mibextid=wwXIfr"
+               target="_blank" rel="noopener noreferrer"
+               class="social-links__btn social-links__btn--facebook" aria-label="Facebook">
               <i class="fa-brands fa-facebook-f"></i>
             </a>
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/bibisteinmetz1?igsh=YnMxNjMzOW91Y3I0&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--instagram" aria-label="Instagram">
+            <a href="https://www.instagram.com/bibisteinmetz1?igsh=YnMxNjMzOW91Y3I0&utm_source=qr"
+               target="_blank" rel="noopener noreferrer"
+               class="social-links__btn social-links__btn--instagram" aria-label="Instagram">
               <i class="fa-brands fa-instagram"></i>
             </a>
-            <!-- TikTok -->
-            <a href="https://www.tiktok.com/@bibisteinmetz24?_r=1&_t=ZS-95FmIN9PRcD" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--tiktok" aria-label="TikTok">
+            <a href="https://www.tiktok.com/@bibisteinmetz24?_r=1&_t=ZS-95FmIN9PRcD"
+               target="_blank" rel="noopener noreferrer"
+               class="social-links__btn social-links__btn--tiktok" aria-label="TikTok">
               <i class="fa-brands fa-tiktok"></i>
             </a>
-            <!-- Twitter / X -->
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--twitter" aria-label="Twitter / X">
+            <a href="https://twitter.com"
+               target="_blank" rel="noopener noreferrer"
+               class="social-links__btn social-links__btn--twitter" aria-label="Twitter / X">
               <i class="fa-brands fa-x-twitter"></i>
             </a>
-            <!-- YouTube -->
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-links__btn social-links__btn--youtube" aria-label="YouTube">
+            <a href="https://youtube.com"
+               target="_blank" rel="noopener noreferrer"
+               class="social-links__btn social-links__btn--youtube" aria-label="YouTube">
               <i class="fa-brands fa-youtube"></i>
             </a>
           </div>
@@ -577,9 +579,9 @@
     <!-- Barre de bas de page -->
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p class="footer__copy"></p>
-        <p class="footer__website"></p>
-        <p class="footer__credit"> <a href="#"></a></p>
+        <p class="footer__copy">© 2024 Chez Bibi Steinmetz. Tous droits réservés.</p>
+        <p class="footer__website">www.bibi-xi.vercel.app</p>
+        <p class="footer__credit">Fait avec ❤️ au Bénin</p>
       </div>
     </div>
 
@@ -594,6 +596,7 @@
        SCRIPTS
   ======================================== -->
   <script>
+
     /* --- Hamburger mobile --- */
     const hamburger = document.getElementById('hamburger');
     const mainNav   = document.getElementById('mainNav');
@@ -608,42 +611,28 @@
     });
 
     /* --- Filtres du menu --- */
-    /* --- Filtres du menu --- */
-const filterBtns = document.querySelectorAll('.filter-btn');
-const menuCards  = document.querySelectorAll('.menu-card');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const menuCards  = document.querySelectorAll('.menu-card');
 
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
-    btn.classList.add('filter-btn--active');
-
-    const filter = btn.dataset.filter;
-    menuCards.forEach(card => {
-      // "all" affiche TOUT, sinon on vérifie la catégorie
-      if (filter === 'all') {
-        card.style.display = '';
-      } else {
-        card.style.display = card.dataset.category === filter ? '' : 'none';
-      }
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
+        btn.classList.add('filter-btn--active');
+        const filter = btn.dataset.filter;
+        menuCards.forEach(card => {
+          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+        });
+      });
     });
-  });
-});
 
-    /* --- Remplacement placeholder photos --- */
-    document.querySelectorAll('img[data-placeholder]').forEach(img => {
-      if (!img.src || img.src === window.location.href) {
-        img.alt = img.dataset.placeholder;
-        img.style.background = '#e8e0d5';
-        /* Affiche "PHOTO" en overlay si src vide */
-        const wrap = img.closest('.menu-card__img-wrap, .hero');
-        if (wrap && !wrap.querySelector('.ph-label')) {
-          const lbl = document.createElement('span');
-          lbl.className = 'ph-label';
-          lbl.textContent = 'PHOTO';
-          wrap.appendChild(lbl);
-        }
-      }
-    });
+    /* --- Commander sur WhatsApp avec nom du plat --- */
+    function commanderWhatsapp(el) {
+      const carte = el.closest('.menu-card');
+      const nom   = carte.dataset.nom || 'ce plat';
+      const msg   = `Bonjour, je voudrais commander : *${nom}*`;
+      const url   = `https://wa.me/2290197601568?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
 
     /* --- Scroll to top --- */
     const scrollTopBtn = document.getElementById('scrollTop');
@@ -651,6 +640,7 @@ filterBtns.forEach(btn => {
       scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
     });
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
   </script>
 
 </body>
