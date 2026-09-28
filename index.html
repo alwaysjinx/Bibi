@@ -486,7 +486,9 @@
 
   <div class="toast" id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="menu-data.js"></script>
+<script src="supabase-config.js"></script>
 <script>
 let BIBI_SETTINGS = (typeof loadSettings === 'function') ? loadSettings() : { deliveryFee: 500, waNumber: '2290197601568', displayNumber: '0197601568' };
 let WA_NUMBER = BIBI_SETTINGS.waNumber || '2290197601568';
@@ -656,10 +658,7 @@ function buildCard(d){
     + '<button class="btn-wa" onclick="commanderDirect(\'' + d.id + '\')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div></div></div>';
   return art;
 }
-function applyAdminData(){
-  try{
-    if(typeof loadDishes !== 'function') return;
-    const dishes = loadDishes();
+function applyDishesToDOM(dishes){
     const grid = document.getElementById('menuGrid');
     const byId = {};
     dishes.forEach(d=>{ byId[d.id]=d; });
@@ -682,34 +681,71 @@ function applyAdminData(){
     // 2) Ajoute les nouveaux plats créés dans l'admin
     dishes.forEach(d=>{
       if(d.visible === false) return;
-      if(!document.querySelector('.menu-card[data-id="'+d.id+'"]')){
+      if(!document.querySelector('.menu-card[data-id="'+CSS.escape(d.id)+'"]')){
         const anchor = document.getElementById('jus');
         const el = buildCard(d);
         if(anchor && anchor.parentNode === grid) grid.insertBefore(el, anchor);
         else grid.appendChild(el);
       }
     });
-    // 3) Réglages : livraison + WhatsApp
-    const s = (typeof loadSettings==='function') ? loadSettings() : {};
-    WA_NUMBER = s.waNumber || WA_NUMBER;
-    DELIVERY_FEE = parseInt(s.deliveryFee,10) || 0;
+}
+function applySettingsToDOM(s){
+    s = s || {};
+    if(s.waNumber) WA_NUMBER = s.waNumber;
+    if(s.deliveryFee != null) DELIVERY_FEE = parseInt(s.deliveryFee,10) || 0;
     const disp = s.displayNumber || '0197601568';
-    document.querySelectorAll('.cart__mode label:last-child, .cart__mode .mode-txt small:last-child').forEach(()=>{});
     const modeSmall = document.querySelector('.mode-card:last-child .mode-txt small');
     if(modeSmall) modeSmall.textContent = '+' + DELIVERY_FEE.toLocaleString('fr-FR') + ' F • Cotonou';
-    const modeLabel = document.querySelector('.cart__mode');
     document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
       const href = a.getAttribute('href');
       if(href && href.includes('wa.me/')) a.setAttribute('href', href.replace(/wa\.me\/\d+/, 'wa.me/' + WA_NUMBER));
     });
+    const telLink = document.querySelector('.header__phone');
+    if(telLink) telLink.setAttribute('href', 'tel:+' + WA_NUMBER);
     document.querySelectorAll('.header__phone span').forEach(el=>{ el.textContent = disp; });
     const topWa = document.querySelector('.topbar a');
     if(topWa) topWa.innerHTML = '<i class="fa-brands fa-whatsapp"></i> ' + esc(disp);
+}
+function applyAdminData(){
+  try{
+    if(typeof loadDishes !== 'function') return;
+    applyDishesToDOM(loadDishes());
+    // 3) Réglages : livraison + WhatsApp
+    const s = (typeof loadSettings==='function') ? loadSettings() : {};
+    applySettingsToDOM({ waNumber: s.waNumber, deliveryFee: s.deliveryFee, displayNumber: s.displayNumber });
   }catch(e){ console.warn('admin data:', e); }
+}
+/* --- Base en ligne Supabase : le menu affiché à TOUS les visiteurs --- */
+function supaClient(){
+  try{
+    if(typeof window.supabase === 'undefined') return null;
+    if(typeof SUPABASE_URL !== 'string' || SUPABASE_URL.indexOf('PASTE_') === 0) return null;
+    if(typeof SUPABASE_ANON_KEY !== 'string' || SUPABASE_ANON_KEY.indexOf('PASTE_') === 0) return null;
+    return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }catch(e){ return null; }
+}
+async function loadOnlineMenu(){
+  const sb = supaClient();
+  if(!sb) return;
+  try{
+    const r1 = await sb.from('dishes').select('*');
+    if(r1.data && r1.data.length){
+      const dishes = r1.data.map(d=>({ id:d.id, nom:d.nom, cat:d.cat, prix:d.prix, desc:d.desc||'', img:d.img||'', badge:d.badge||'', rating:d.rating||'4.5', visible:d.visible!==false }));
+      applyDishesToDOM(dishes);
+      try{ localStorage.setItem('bibi_dishes_v1', JSON.stringify(dishes)); }catch(e){}
+    }
+    const r2 = await sb.from('settings').select('*').eq('id',1).maybeSingle();
+    if(r2.data){
+      applySettingsToDOM({ waNumber: r2.data.wa_number, deliveryFee: r2.data.delivery_fee, displayNumber: r2.data.display_number });
+      try{ const s = loadSettings(); s.waNumber=r2.data.wa_number||s.waNumber; s.deliveryFee=(r2.data.delivery_fee!=null?r2.data.delivery_fee:s.deliveryFee); s.displayNumber=r2.data.display_number||s.displayNumber; localStorage.setItem('bibi_settings_v1', JSON.stringify(s)); }catch(e){}
+    }
+    renderCart(); applyFilters();
+  }catch(e){ console.warn('supabase offline:', e); }
 }
 applyAdminData();
 renderCart();
 applyFilters();
+loadOnlineMenu();
 </script>
 </body>
 </html>

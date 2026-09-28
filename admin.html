@@ -78,7 +78,7 @@ label input:focus,label select,label textarea:focus{outline:none;border-color:va
 </header>
 
 <div class="wrap">
-  <div class="notice"><i class="fa-solid fa-circle-info"></i> Les modifications sont enregistrées dans <b>ce navigateur</b> et s'affichent aussitôt sur la page du site. Pour que tout le monde les voie en ligne, il faudra ensuite publier le site (demandez-moi).</div>
+  <div class="notice"><i class="fa-solid fa-circle-info"></i> <span id="cloudState">Connexion...</span><br>Les modifications sont enregistrées dans <b>ce navigateur</b> et s'affichent aussitôt sur la page du site.</div>
 
   <div class="stats">
     <div class="stat"><strong id="stNb">0</strong><span>Plats au menu</span></div>
@@ -150,6 +150,11 @@ label input:focus,label select,label textarea:focus{outline:none;border-color:va
       <button class="btn btn-green" onclick="saveSettingsForm()"><i class="fa-solid fa-floppy-disk"></i> Enregistrer les réglages</button>
     </div>
     <div class="card">
+      <h2>🌍 Publication en ligne</h2>
+      <p style="font-size:.83rem;margin-bottom:.7rem">Envoie tout le menu actuel vers la base en ligne pour que <b>tous les clients</b> le voient.</p>
+      <button class="btn btn-green" onclick="pushAll()"><i class="fa-solid fa-cloud-arrow-up"></i> Publier tout le menu</button>
+    </div>
+    <div class="card">
       <h2>💾 Sauvegarde</h2>
       <div style="display:flex;gap:.6rem;flex-wrap:wrap">
         <button class="btn btn-dark" onclick="exportJSON()"><i class="fa-solid fa-download"></i> Exporter</button>
@@ -165,11 +170,73 @@ label input:focus,label select,label textarea:focus{outline:none;border-color:va
 </div>
 
 <div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="menu-data.js"></script>
+<script src="supabase-config.js"></script>
 <script>
 let dishes = loadDishes();
 let settings = loadSettings();
 let editPhotoData = '';
+let cloudOK = false;
+
+function sb(){
+  try{
+    if(typeof window.supabase === 'undefined') return null;
+    if(typeof SUPABASE_URL !== 'string' || SUPABASE_URL.indexOf('PASTE_') === 0) return null;
+    if(typeof SUPABASE_ANON_KEY !== 'string' || SUPABASE_ANON_KEY.indexOf('PASTE_') === 0) return null;
+    return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }catch(e){ return null; }
+}
+function setCloud(on){
+  cloudOK = on;
+  const el = document.getElementById('cloudState');
+  if(el){ el.innerHTML = on ? '🟢 <b>En ligne</b> : les modifs sont visibles par tous' : '🔴 <b>Hors ligne</b> : renseigne les clés Supabase (voir guide)'; }
+}
+/* Récupère le menu publié (visible par tous les clients) */
+async function pullOnline(){
+  const c = sb(); if(!c){ setCloud(false); return; }
+  try{
+    const r1 = await c.from('dishes').select('*');
+    if(r1.error) throw r1.error;
+    if(r1.data && r1.data.length){
+      dishes = r1.data.map(d=>({ id:d.id, nom:d.nom, cat:d.cat, prix:d.prix, desc:d.desc||'', img:d.img||'', badge:d.badge||'', rating:d.rating||'4.5', visible:d.visible!==false }));
+      saveDishes(dishes);
+    }
+    const r2 = await c.from('settings').select('*').eq('id',1).maybeSingle();
+    if(r2.data){
+      settings.deliveryFee = (r2.data.delivery_fee!=null?r2.data.delivery_fee:settings.deliveryFee);
+      settings.waNumber = r2.data.wa_number||settings.waNumber;
+      settings.displayNumber = r2.data.display_number||settings.displayNumber;
+      saveSettings(settings); fillSettings();
+    }
+    setCloud(true); renderList();
+  }catch(e){ console.warn(e); setCloud(false); }
+}
+async function pushDish(d){
+  const c = sb(); if(!c) return;
+  try{
+    const { error } = await c.from('dishes').upsert({ id:d.id, nom:d.nom, cat:d.cat, prix:d.prix, desc:d.desc||'', img:d.img||'', badge:d.badge||'', rating:d.rating||'4.5', visible:d.visible!==false, updated_at:new Date().toISOString() });
+    if(!error) setCloud(true);
+  }catch(e){}
+}
+async function delOnline(id){
+  const c = sb(); if(!c) return;
+  try{ await c.from('dishes').delete().eq('id',id); }catch(e){}
+}
+async function pushSettingsOnline(){
+  const c = sb(); if(!c) return;
+  try{
+    await c.from('settings').upsert({ id:1, delivery_fee:settings.deliveryFee, wa_number:settings.waNumber, display_number:settings.displayNumber });
+    setCloud(true);
+  }catch(e){}
+}
+async function pushAll(){
+  const c = sb(); if(!c){ toast('Clés Supabase manquantes'); return; }
+  toast('Publication en cours...');
+  for(const d of dishes){ await pushDish(d); }
+  await pushSettingsOnline();
+  toast('Menu publié ✔ visible par tous');
+}
 
 function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
 function unlock(){
@@ -266,12 +333,15 @@ function saveDish(){
     d.nom=nom; d.cat=cat; d.prix=prix; d.badge=badge; d.rating=rating; d.desc=desc;
     if(img) d.img=img;
     toast('Plat modifié ✔');
+    saveDishes(dishes); pushDish(d);
   }else{
     if(!img) img='ATT.jpeg';
-    dishes.push({ id: slug(nom)+'-'+Date.now().toString(36), nom, cat, prix, badge, rating, desc, img, visible:true });
+    const nd = { id: slug(nom)+'-'+Date.now().toString(36), nom, cat, prix, badge, rating, desc, img, visible:true };
+    dishes.push(nd);
     toast('Plat ajouté ✔');
+    saveDishes(dishes); pushDish(nd);
   }
-  saveDishes(dishes); resetForm(); renderList(); showTab('plats');
+  resetForm(); renderList(); showTab('plats');
 }
 function editDish(id){
   const d = dishes.find(x=>x.id===id); if(!d) return;
@@ -287,13 +357,13 @@ function editDish(id){
 function toggleVis(id){
   const d = dishes.find(x=>x.id===id); if(!d) return;
   d.visible = (d.visible===false)?true:false;
-  saveDishes(dishes); renderList();
+  saveDishes(dishes); pushDish(d); renderList();
 }
 function delDish(id){
   const d = dishes.find(x=>x.id===id);
   if(!confirm('Supprimer « '+(d?d.nom:id)+' » ?')) return;
   dishes = dishes.filter(x=>x.id!==id);
-  saveDishes(dishes); renderList(); toast('Plat supprimé');
+  saveDishes(dishes); delOnline(id); renderList(); toast('Plat supprimé');
 }
 function fillSettings(){
   document.getElementById('sFee').value=settings.deliveryFee;
@@ -306,7 +376,7 @@ function saveSettingsForm(){
   settings.waNumber = document.getElementById('sWa').value.replace(/\D/g,'')||'2290197601568';
   settings.displayNumber = document.getElementById('sDisp').value.trim()||'0197601568';
   settings.adminPass = document.getElementById('sPass').value.trim()||'bibi123';
-  saveSettings(settings); renderList(); toast('Réglages enregistrés ✔');
+  saveSettings(settings); pushSettingsOnline(); renderList(); toast('Réglages enregistrés ✔');
 }
 function doReset(){
   if(!confirm('Tout réinitialiser ? Vos ajouts seront perdus.')) return;
@@ -330,7 +400,7 @@ function importJSON(e){
   };
   r.readAsText(f);
 }
-fillSettings(); renderList();
+fillSettings(); renderList(); pullOnline();
 </script>
 </body>
 </html>
