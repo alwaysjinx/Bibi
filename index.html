@@ -3,645 +3,713 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CHEZ Bibi Steinmetz</title>
+  <title>Chez Bibi Steinmetz — Cuisine Béninoise à Cotonou | Commander sur WhatsApp</title>
+  <meta name="description" content="Chez Bibi Steinmetz à Cotonou : attiéké, atassi, riz au gras, chawarma, jus naturels. Commandez en ligne, recevez sur WhatsApp au 0197601568. Fait maison, frais et savoureux." />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="ATT.jpeg" type="image/jpeg">
 </head>
 <body>
 
-  <!-- ========================================
-       HEADER / NAVIGATION
-  ======================================== -->
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span><i class="fa-solid fa-location-dot"></i> Cotonou, Bénin</span>
+      <span class="topbar__sep">•</span>
+      <span><i class="fa-regular fa-clock"></i> Lun – Sam : 08h00 – 22h00</span>
+      <span class="topbar__sep">•</span>
+      <a href="https://wa.me/2290197601568" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> 0197601568</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="#" class="header__logo">
-        <span class="logo-icon">🍽</span>
-        <span class="logo-text">CHEZ Bibi Steinmetz</span>
+      <a href="#accueil" class="header__logo">
+        <span class="logo-img"><img src="ATT.jpeg" alt="Chez Bibi Steinmetz"></span>
+        <span class="logo-text">Chez <em>Bibi</em> Steinmetz</span>
       </a>
       <nav class="header__nav" id="mainNav">
         <ul class="nav__list">
-          <li class="nav__item nav__item--dropdown">
-            <a href="#">Accueil <i class="fa-solid fa-chevron-down fa-xs"></i></a>
-            <ul class="dropdown">
-              <li><a href="#">Bienvenue</a></li>
-              <li><a href="#">Notre histoire</a></li>
-            </ul>
-          </li>
-          <li class="nav__item nav__item--dropdown">
-            <a href="#">Menu <i class="fa-solid fa-chevron-down fa-xs"></i></a>
-            <ul class="dropdown">
-              <li><a href="#">Menu du jour</a></li>
-              <li><a href="#">Carte complète</a></li>
-            </ul>
-          </li>
-          <li class="nav__item">
-            <a href="#verbas">Contact</a>
-          </li>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#histoire">Notre histoire</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#jus">Jus naturels</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
       <div class="header__actions">
-        <a href="#" class="header__btn" aria-label="Mon compte">
-          <i class="fa-regular fa-user"></i>
-        </a>
-        <a href="#" class="header__btn header__btn--cart" aria-label="Panier">
+        <a class="header__phone" href="tel:+2290197601568"><i class="fa-solid fa-phone"></i><span>0197601568</span></a>
+        <button class="header__btn header__btn--cart" id="openCartBtn" aria-label="Voir mon panier">
           <i class="fa-solid fa-bag-shopping"></i>
-          <span class="cart-count">0</span>
-        </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-          <span></span><span></span><span></span>
+          <span class="cart-count" id="cartCount">0</span>
         </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
 
-  <!-- ========================================
-       HERO SECTION
-  ======================================== -->
-  <section class="hero">
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <img src="image1.jpeg" alt="" class="hero__bg" />
     <div class="hero__overlay"></div>
-    <img src="image1.jpeg" alt="Fond du restaurant" class="hero__bg"/>
-    <div class="container hero__content">
-      <p class="hero__eyebrow">Bienvenue Chez Bibi Steinmetz</p>
-      <h1 class="hero__title">Notre <em>Menu</em></h1>
-      <nav class="breadcrumb" aria-label="Fil d'Ariane">
-        <a href="#">Accueil</a>
-        <span class="breadcrumb__sep"><i class="fa-solid fa-chevron-right fa-xs"></i></span>
-        <span>Notre Menu</span>
-      </nav>
-    </div>
-  </section>
-
-  <!-- ========================================
-       SECTION MENU
-  ======================================== -->
-  <section class="menu-section" id="menu">
-    <div class="container">
-
-      <!-- Filtres catégories -->
-      <div class="menu-filters" role="tablist" aria-label="Catégories du menu">
-        <button class="filter-btn filter-btn--active" data-filter="all" role="tab">
-          <i class="fa-solid fa-utensils"></i> Tous
-        </button>
-        <button class="filter-btn" data-filter="drinks" role="tab">
-          <i class="fa-solid fa-martini-glass-citrus"></i> Boissons
-        </button>
-        <button class="filter-btn" data-filter="pizza" role="tab">
-          <i class="fa-solid fa-pizza-slice"></i> Fast food
-        </button>
-        <button class="filter-btn" data-filter="salad" role="tab">
-          <i class="fa-solid fa-leaf"></i> Salade
-        </button>
-        <button class="filter-btn" data-filter="spicy" role="tab">
-          <i class="fa-solid fa-fire"></i> Classiques
-        </button>
-        <button class="filter-btn" data-filter="sweets" role="tab">
-          <i class="fa-solid fa-cake-candles"></i> Sucreries
-        </button>
-        <a href="#" class="btn btn--primary menu-filters__cta">Voir tout</a>
-      </div>
-
-      <!-- Grille des plats -->
-      <div class="menu-grid" id="menuGrid">
-
-        <!-- ---- CARTE 1 ---- -->
-        <article class="menu-card" data-category="spicy" data-nom="Attieke poisson alloco">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">20%</span>
-            <img src="ATT.jpeg" alt="Attieke poisson alloco" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 5.00</span>
-            </div>
-            <h3 class="menu-card__title">Attieke poisson alloco</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2500 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 2 ---- -->
-        <article class="menu-card" data-category="spicy" data-nom="Atassi poisson">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">30%</span>
-            <img src="atss.jpeg" alt="Atassi poisson" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 5.00</span>
-            </div>
-            <h3 class="menu-card__title">Atassi poisson</h3>
-            <p class="menu-card__desc">Accompagné de alloco, fromage et oeuf</p>
-            <span class="menu-card__price">2500 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 3 ---- -->
-        <article class="menu-card" data-category="pizza" data-nom="Chawarma">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">20%</span>
-            <img src="chawarma.jpeg" alt="Chawarma" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
-            </div>
-            <h3 class="menu-card__title">Chawarma</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2500 Fcfa / 2000 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 4 ---- -->
-        <article class="menu-card" data-category="pizza" data-nom="Cheese Panini">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">8%</span>
-            <img src="paninicheese.jpeg" alt="Cheese Panini" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Cheese Panini</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">1500 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 5 ---- -->
-        <article class="menu-card" data-category="spicy" data-nom="Riz au gras aileron">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">17%</span>
-            <img src="RGAILERON.jpeg" alt="Riz au gras aileron" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 3.00</span>
-            </div>
-            <h3 class="menu-card__title">Riz au gras aileron</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2000 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 6 ---- -->
-        <article class="menu-card" data-category="spicy" data-nom="Riz au gras poisson">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">8%</span>
-            <img src="RGPOISSON.jpeg" alt="Riz au gras poisson" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.80</span>
-            </div>
-            <h3 class="menu-card__title">Riz au gras poisson</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2000 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 7 ---- -->
-        <article class="menu-card" data-category="spicy" data-nom="Couscous aileron">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">8%</span>
-            <img src="ccaileron.jpeg" alt="Couscous aileron" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
-            </div>
-            <h3 class="menu-card__title">Couscous aileron</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2000 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 8 ---- -->
-        <article class="menu-card" data-category="spicy" data-nom="Akassa moyo">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">17%</span>
-            <img src="akassa.jpeg" alt="Akassa moyo" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.00</span>
-            </div>
-            <h3 class="menu-card__title">Akassa moyo</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">1000 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 9 ---- -->
-        <article class="menu-card" data-category="drinks" data-nom="Jus de pastèque">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="pasteque.jpeg" alt="Jus de pastèque" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Jus de pastèque</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 10 ---- -->
-        <article class="menu-card" data-category="drinks" data-nom="Jus d'ananas">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="ananas.jpeg" alt="Jus d'ananas" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Jus d'ananas</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 11 ---- -->
-        <article class="menu-card" data-category="drinks" data-nom="Jus de gingembre">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="gingembre.jpeg" alt="Jus de gingembre" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Jus de gingembre</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 12 ---- -->
-        <article class="menu-card" data-category="drinks" data-nom="Jus de baobab">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="baobab.jpeg" alt="Jus de baobab" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Jus de baobab</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 13 ---- -->
-        <article class="menu-card" data-category="drinks" data-nom="Citronelle">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="citronelle.jpeg" alt="Citronelle" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Citronelle</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 14 ---- -->
-        <article class="menu-card" data-category="pizza" data-nom="Sandwich">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="sandwich.jpeg" alt="Sandwich" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Sandwich</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">1100 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 15 ---- -->
-        <article class="menu-card" data-category="spicy" data-nom="Piron">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="eba.jpeg" alt="Piron" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Piron</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2000 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 16 ---- -->
-        <article class="menu-card" data-category="salad" data-nom="Salade">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="top-view-homemade-delicious-salad-with-many-ingredients-plate-black-green-mix-colors-background.jpg" alt="Salade" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Salade</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">2000 Fcfa</span>
-          </div>
-        </article>
-
-        <!-- ---- CARTE 17 ---- -->
-        <article class="menu-card" data-category="drinks" data-nom="Tamarin">
-          <div class="menu-card__img-wrap">
-            <span class="menu-card__badge">10%</span>
-            <img src="tamarin.jpeg" alt="Tamarin" class="menu-card__img"/>
-            <div class="menu-card__overlay">
-              <a href="#" onclick="commanderWhatsapp(this); return false;"
-                 class="menu-card__quick-add" aria-label="Commander sur WhatsApp">
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-          <div class="menu-card__body">
-            <div class="menu-card__meta">
-              <span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.50</span>
-            </div>
-            <h3 class="menu-card__title">Tamarin</h3>
-            <p class="menu-card__desc"></p>
-            <span class="menu-card__price">600 Fcfa</span>
-          </div>
-        </article>
-
-      </div><!-- /menu-grid -->
-    </div>
-  </section>
-
-  <!-- ========================================
-       FOOTER
-  ======================================== -->
-  <footer class="footer" id="verbas">
-    <div class="container footer__grid">
-
-      <!-- Colonne 1 — Contact -->
-      <div class="footer__col">
-        <h4 class="footer__heading">Nous Contacter</h4>
-        <ul class="footer__contact-list">
-          <li>
-            <i class="fa-solid fa-location-dot footer__icon"></i>
-            <span>Cotonou, Bénin</span>
-          </li>
-          <li>
-            <i class="fa-solid fa-phone footer__icon"></i>
-            <span>+229 0197601568<br>+229 0196175912</span>
-          </li>
-          <li>
-            <i class="fa-solid fa-envelope footer__icon"></i>
-            <span><a href="mailto:dam.bibi3@gmail.com">dam.bibi3@gmail.com</a></span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Colonne 2 — Liens -->
-      <div class="footer__col">
-        <h4 class="footer__heading">Nos Liens</h4>
-        <ul class="footer__links">
-          <li><a href="#">À propos</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Équipe</a></li>
-          <li><a href="#">Détails équipe</a></li>
-          <li><a href="#">Témoignages</a></li>
-        </ul>
-      </div>
-
-      <!-- Colonne 3 — Services -->
-      <div class="footer__col">
-        <h4 class="footer__heading">Nos Services</h4>
-        <ul class="footer__links">
-          <li><a href="#">Équipe exceptionnelle</a></li>
-          <li><a href="#">Service à table</a></li>
-          <li><a href="#">Prise de commande</a></li>
-          <li><a href="#">Livraison rapide</a></li>
-          <li><a href="#">Nourriture saine</a></li>
-        </ul>
-      </div>
-
-      <!-- Colonne 4 — Aide + Réseaux sociaux -->
-      <div class="footer__col">
-        <h4 class="footer__heading">Centre d'aide</h4>
-        <ul class="footer__links">
-          <li><a href="#">Service client</a></li>
-          <li><a href="#">Détail du service</a></li>
-          <li><a href="#">Bientôt disponible</a></li>
-          <li><a href="#">En maintenance</a></li>
-        </ul>
-
-        <!-- Réseaux sociaux -->
-        <div class="footer__social">
-          <h4 class="footer__heading footer__heading--social">Suivez-nous</h4>
-          <div class="social-links">
-            <a href="https://www.facebook.com/share/1UNjU7PYBx/?mibextid=wwXIfr"
-               target="_blank" rel="noopener noreferrer"
-               class="social-links__btn social-links__btn--facebook" aria-label="Facebook">
-              <i class="fa-brands fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/bibisteinmetz1?igsh=YnMxNjMzOW91Y3I0&utm_source=qr"
-               target="_blank" rel="noopener noreferrer"
-               class="social-links__btn social-links__btn--instagram" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@bibisteinmetz24?_r=1&_t=ZS-95FmIN9PRcD"
-               target="_blank" rel="noopener noreferrer"
-               class="social-links__btn social-links__btn--tiktok" aria-label="TikTok">
-              <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a href="https://twitter.com"
-               target="_blank" rel="noopener noreferrer"
-               class="social-links__btn social-links__btn--twitter" aria-label="Twitter / X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a href="https://youtube.com"
-               target="_blank" rel="noopener noreferrer"
-               class="social-links__btn social-links__btn--youtube" aria-label="YouTube">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
-          </div>
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <p class="hero__badge"><i class="fa-solid fa-fire"></i> Cuisine béninoise authentique • Cotonou</p>
+        <h1 class="hero__title">Le goût du Bénin,<br><em>fait maison</em> avec amour.</h1>
+        <p class="hero__sub">Attiéké poisson alloco, atassi, riz au gras, chawarma, panini et jus 100% naturels — préparés frais chaque jour par <strong>Bibi Steinmetz</strong>. Commandez en 1 clic, on vous confirme sur WhatsApp.</p>
+        <div class="hero__cta">
+          <a href="#menu" class="btn btn--primary btn--lg"><i class="fa-solid fa-utensils"></i> Voir le menu</a>
+          <button class="btn btn--whatsapp btn--lg" onclick="openCart()"><i class="fa-brands fa-whatsapp"></i> Commander</button>
+        </div>
+        <div class="hero__trust">
+          <div class="trust"><strong>4.8/5</strong><span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span><small>Clients satisfaits</small></div>
+          <div class="trust"><strong>18</strong><small>Plats & jus maison</small></div>
+          <div class="trust"><strong>~30 min</strong><small>Préparation rapide</small></div>
         </div>
       </div>
-
-    </div><!-- /footer__grid -->
-
-    <!-- Barre de bas de page -->
-    <div class="footer__bottom">
-      <div class="container footer__bottom-inner">
-        <p class="footer__copy">© 2024 Chez Bibi Steinmetz. Tous droits réservés.</p>
-        <p class="footer__website">www.bibi-xi.vercel.app</p>
-        <p class="footer__credit">Fait avec ❤️ au Bénin</p>
+      <div class="hero__visual">
+        <div class="hero__main-img"><img src="ATT.jpeg" alt="Attiéké poisson alloco"><span class="hero__price-tag">Attiéké poisson • 2500 F</span></div>
+        <div class="hero__mini hero__mini--1"><img src="ananas.jpeg" alt="Jus d'ananas naturel"></div>
+        <div class="hero__mini hero__mini--2"><img src="chawarma.jpeg" alt="Chawarma"><span class="hero__float"><i class="fa-brands fa-whatsapp"></i> Commande WhatsApp</span></div>
       </div>
     </div>
+  </section>
 
+  <!-- ATOUTS -->
+  <section class="perks">
+    <div class="container perks__grid">
+      <div class="perk"><i class="fa-solid fa-motorcycle"></i><div><strong>Livraison rapide</strong><span>Cotonou et environs</span></div></div>
+      <div class="perk"><i class="fa-solid fa-kitchen-set"></i><div><strong>100% fait maison</strong><span>Recettes familiales</span></div></div>
+      <div class="perk"><i class="fa-solid fa-leaf"></i><div><strong>Jus 100% naturels</strong><span>Sans conservateurs</span></div></div>
+      <div class="perk"><i class="fa-solid fa-money-bill-wave"></i><div><strong>Paiement à la livraison</strong><span>Espèces / Mobile Money</span></div></div>
+    </div>
+  </section>
+
+  <!-- BIO / HISTOIRE -->
+  <section class="about" id="histoire">
+    <div class="container about__grid">
+      <div class="about__images">
+        <img src="atss.jpeg" alt="Atassi poisson" class="about__img about__img--main">
+        <img src="gingembre.jpeg" alt="Jus de gingembre" class="about__img about__img--small">
+        <div class="about__exp"><strong>100%</strong><span>Fait maison</span></div>
+      </div>
+      <div class="about__text">
+        <p class="eyebrow">— Notre histoire</p>
+        <h2>Bienvenue <em>Chez Bibi Steinmetz</em>, la cantine qui sent bon le Bénin.</h2>
+        <p>Née d'une passion pour la cuisine familiale béninoise, <strong>Bibi Steinmetz</strong> a ouvert sa table à Cotonou avec une promesse simple : <strong>des plats généreux, frais et abordables, comme à la maison.</strong></p>
+        <p>Chaque jour, nous préparons avec soin nos classiques : <strong>attiéké poisson alloco, atassi au poisson avec alloco-fromage-œuf, riz au gras à l'aileron ou au poisson, couscous, piron et akassa moyo</strong>. Côté snack, retrouvez nos <strong>chawarma, cheese panini et sandwichs</strong> bien garnis.</p>
+        <p>Et pour vous désaltérer, nos <strong>jus naturels pressés chaque matin</strong> : gingembre, baobab, tamarin, ananas, pastèque, citronnelle et orange. Sans poudre, sans conservateurs — juste du fruit.</p>
+        <ul class="about__list">
+          <li><i class="fa-solid fa-circle-check"></i> Produits frais du marché, cuisinés du jour</li>
+          <li><i class="fa-solid fa-circle-check"></i> Portions généreuses, prix doux (600 F – 2500 F)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Commande WhatsApp en 1 minute, confirmation immédiate</li>
+        </ul>
+        <div class="about__cta">
+          <a href="#menu" class="btn btn--primary">Découvrir le menu</a>
+          <a href="https://wa.me/2290197601568?text=Bonjour%20Chez%20Bibi%20Steinmetz%20!%20Je%20veux%20passer%20une%20commande." target="_blank" rel="noopener" class="btn btn--ghost"><i class="fa-brands fa-whatsapp"></i> Discuter sur WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <p class="eyebrow eyebrow--center">— Notre carte</p>
+      <h2 class="section-title">Un menu qui donne <em>faim</em></h2>
+      <p class="section-sub">Ajoutez au panier, puis validez : votre commande arrive directement sur notre WhatsApp <strong>0197601568</strong>.</p>
+
+      <div class="menu-toolbar">
+        <div class="menu-filters" role="tablist" aria-label="Catégories">
+          <button class="filter-btn filter-btn--active" data-filter="all"><i class="fa-solid fa-border-all"></i> Tous</button>
+          <button class="filter-btn" data-filter="classique"><i class="fa-solid fa-fire"></i> Classiques</button>
+          <button class="filter-btn" data-filter="fastfood"><i class="fa-solid fa-pizza-slice"></i> Fast-food</button>
+          <button class="filter-btn" data-filter="jus"><i class="fa-solid fa-martini-glass-citrus"></i> Jus naturels</button>
+          <button class="filter-btn" data-filter="salade"><i class="fa-solid fa-leaf"></i> Salade</button>
+        </div>
+        <label class="search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" id="searchInput" placeholder="Rechercher un plat, un jus..."></label>
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+
+        <article class="menu-card" data-category="classique" data-id="attieke" data-nom="Attiéké poisson alloco" data-prix="2500">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge">Populaire</span><img src="ATT.jpeg" alt="Attiéké poisson alloco" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 5.0</span><span class="menu-card__cat">Classique</span></div>
+            <h3>Attiéké poisson alloco</h3>
+            <p>Attiéké moelleux, poisson frit croustillant, alloco dorés, oignons et piment doux. Le best-seller de la maison.</p>
+            <div class="menu-card__foot"><span class="price">2500 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('attieke')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('attieke')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="classique" data-id="atassi" data-nom="Atassi poisson" data-prix="2500">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge">Généreux</span><img src="atss.jpeg" alt="Atassi poisson" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 5.0</span><span class="menu-card__cat">Classique</span></div>
+            <h3>Atassi poisson</h3>
+            <p>Riz-haricot atassi parfumé, poisson frit, accompagné d'alloco, fromage et œuf. Complet et nourrissant.</p>
+            <div class="menu-card__foot"><span class="price">2500 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('atassi')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('atassi')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="classique" data-id="riz-aileron" data-nom="Riz au gras aileron" data-prix="2000">
+          <div class="menu-card__img-wrap"><img src="RGAILERON.jpeg" alt="Riz au gras aileron" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.6</span><span class="menu-card__cat">Classique</span></div>
+            <h3>Riz au gras aileron</h3>
+            <p>Riz au gras bien rouge, aileron de poulet fondant, sauce tomate relevée. Recette de famille.</p>
+            <div class="menu-card__foot"><span class="price">2000 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('riz-aileron')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('riz-aileron')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="classique" data-id="riz-poisson" data-nom="Riz au gras poisson" data-prix="2000">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge">4.8 ★</span><img src="RGPOISSON.jpeg" alt="Riz au gras poisson" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.8</span><span class="menu-card__cat">Classique</span></div>
+            <h3>Riz au gras poisson</h3>
+            <p>Riz au gras savoureux au poisson frit, sauce tomate maison légèrement pimentée.</p>
+            <div class="menu-card__foot"><span class="price">2000 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('riz-poisson')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('riz-poisson')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="classique" data-id="couscous" data-nom="Couscous aileron" data-prix="2000">
+          <div class="menu-card__img-wrap"><img src="ccaileron.jpeg" alt="Couscous aileron" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.5</span><span class="menu-card__cat">Classique</span></div>
+            <h3>Couscous aileron</h3>
+            <p>Couscous moelleux, aileron braisé, légumes et jus corsé. Léger mais qui cale bien.</p>
+            <div class="menu-card__foot"><span class="price">2000 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('couscous')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('couscous')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="classique" data-id="akassa" data-nom="Akassa moyo" data-prix="1000">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge">Petit prix</span><img src="akassa.jpeg" alt="Akassa moyo" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.4</span><span class="menu-card__cat">Classique</span></div>
+            <h3>Akassa moyo</h3>
+            <p>Akassa lisse et douce, sauce moyo fraîche tomate-oignon-piment. Simple et efficace.</p>
+            <div class="menu-card__foot"><span class="price">1000 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('akassa')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('akassa')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="classique" data-id="piron" data-nom="Piron" data-prix="2000">
+          <div class="menu-card__img-wrap"><img src="eba.jpeg" alt="Piron" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.5</span><span class="menu-card__cat">Classique</span></div>
+            <h3>Piron</h3>
+            <p>Piron (eba) bien pilé, sauce tomate relevée au poisson. Pour les amateurs de vrai goût.</p>
+            <div class="menu-card__foot"><span class="price">2000 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('piron')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('piron')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="fastfood" data-id="chawarma-poulet" data-nom="Chawarma poulet" data-prix="2500">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge">Top snack</span><img src="chawarma.jpeg" alt="Chawarma" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.7</span><span class="menu-card__cat">Fast-food</span></div>
+            <h3>Chawarma poulet</h3>
+            <p>Galette grillée, poulet mariné, crudités, frites et sauce blanche. Disponible poulet 2500 F / viande 2000 F.</p>
+            <div class="menu-card__foot"><span class="price">2500 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('chawarma-poulet')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('chawarma-poulet')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="fastfood" data-id="panini" data-nom="Cheese Panini" data-prix="1500">
+          <div class="menu-card__img-wrap"><img src="paninicheese.jpeg" alt="Cheese Panini" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.5</span><span class="menu-card__cat">Fast-food</span></div>
+            <h3>Cheese Panini</h3>
+            <p>Pain panini pressé, fromage fondant, poulet/viande, crudités. Croustillant dehors, fondant dedans.</p>
+            <div class="menu-card__foot"><span class="price">1500 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('panini')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('panini')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="fastfood" data-id="sandwich" data-nom="Sandwich garni" data-prix="1100">
+          <div class="menu-card__img-wrap"><img src="sandwich.jpeg" alt="Sandwich" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.5</span><span class="menu-card__cat">Fast-food</span></div>
+            <h3>Sandwich garni</h3>
+            <p>Pain frais, œuf, crudités, mayonnaise maison. Le snack rapide et pas cher qui dépanne bien.</p>
+            <div class="menu-card__foot"><span class="price">1100 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('sandwich')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('sandwich')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="salade" data-id="salade" data-nom="Salade maison" data-prix="2000">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge">Fraîcheur</span><img src="top-view-homemade-delicious-salad-with-many-ingredients-plate-black-green-mix-colors-background.jpg" alt="Salade maison" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.6</span><span class="menu-card__cat">Salade</span></div>
+            <h3>Salade maison</h3>
+            <p>Laitue croquante, tomates, concombres, œuf, maïs et vinaigrette maison. Fraîche et colorée.</p>
+            <div class="menu-card__foot"><span class="price">2000 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('salade')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('salade')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <span id="jus" style="grid-column:1/-1;height:0"></span>
+
+        <article class="menu-card" data-category="jus" data-id="jus-anans" data-nom="Jus d'ananas" data-prix="600">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge badge--green">Naturel</span><img src="ananas.jpeg" alt="Jus d'ananas" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.8</span><span class="menu-card__cat">Jus naturel</span></div>
+            <h3>Jus d'ananas</h3>
+            <p>Ananas frais pressé, sucré naturellement. Vitaminé et glacé, parfait avec l'attiéké.</p>
+            <div class="menu-card__foot"><span class="price">600 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('jus-anans')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('jus-anans')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="jus" data-id="jus-gingembre" data-nom="Jus de gingembre" data-prix="600">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge badge--green">Naturel</span><img src="gingembre.jpeg" alt="Jus de gingembre" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.9</span><span class="menu-card__cat">Jus naturel</span></div>
+            <h3>Jus de gingembre</h3>
+            <p>Gingembre fort et parfumé, relevé au citron. Le préféré des clients, bien glacé.</p>
+            <div class="menu-card__foot"><span class="price">600 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('jus-gingembre')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('jus-gingembre')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="jus" data-id="jus-baobab" data-nom="Jus de baobab" data-prix="600">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge badge--green">Naturel</span><img src="baobab.jpeg" alt="Jus de baobab" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.7</span><span class="menu-card__cat">Jus naturel</span></div>
+            <h3>Jus de baobab</h3>
+            <p>Pain de singe onctueux, doux et nourrissant. Riche en calcium et vitamine C.</p>
+            <div class="menu-card__foot"><span class="price">600 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('jus-baobab')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('jus-baobab')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="jus" data-id="jus-pasteque" data-nom="Jus de pastèque" data-prix="600">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge badge--green">Naturel</span><img src="pasteque.jpeg" alt="Jus de pastèque" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.7</span><span class="menu-card__cat">Jus naturel</span></div>
+            <h3>Jus de pastèque</h3>
+            <p>Pastèque juteuse pressée minute, ultra fraîche. Désaltérant n°1 quand il fait chaud.</p>
+            <div class="menu-card__foot"><span class="price">600 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('jus-pasteque')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('jus-pasteque')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="jus" data-id="jus-citronnelle" data-nom="Citronnelle glacée" data-prix="600">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge badge--green">Naturel</span><img src="citronelle.jpeg" alt="Citronnelle" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.6</span><span class="menu-card__cat">Jus naturel</span></div>
+            <h3>Citronnelle glacée</h3>
+            <p>Infusion de citronnelle bien glacée, légère et digestive. Douceur naturelle.</p>
+            <div class="menu-card__foot"><span class="price">600 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('jus-citronnelle')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('jus-citronnelle')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="jus" data-id="jus-tamarin" data-nom="Jus de tamarin" data-prix="600">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge badge--green">Naturel</span><img src="tamarin.jpeg" alt="Tamarin" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.6</span><span class="menu-card__cat">Jus naturel</span></div>
+            <h3>Jus de tamarin</h3>
+            <p>Tamarin acidulé-sucré, fait maison. Goût authentique qui réveille les papilles.</p>
+            <div class="menu-card__foot"><span class="price">600 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('jus-tamarin')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('jus-tamarin')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-card" data-category="jus" data-id="jus-orange" data-nom="Jus d'orange" data-prix="600">
+          <div class="menu-card__img-wrap"><span class="menu-card__badge badge--green">Naturel</span><img src="orange.jpeg" alt="Jus d'orange" class="menu-card__img" loading="lazy"></div>
+          <div class="menu-card__body">
+            <div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> 4.7</span><span class="menu-card__cat">Jus naturel</span></div>
+            <h3>Jus d'orange</h3>
+            <p>Oranges pressées à froid, 100% pur jus. Frais, vitaminé, sans sucre ajouté.</p>
+            <div class="menu-card__foot"><span class="price">600 <small>FCFA</small></span>
+              <div class="card-actions"><button class="btn-add" onclick="addToCart('jus-orange')">Ajouter <i class="fa-solid fa-plus"></i></button><button class="btn-wa" onclick="commanderDirect('jus-orange')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+      <p class="menu-empty" id="menuEmpty" hidden>Aucun plat trouvé. Essayez un autre mot-clé.</p>
+    </div>
+  </section>
+
+  <!-- COMMENT COMMANDER -->
+  <section class="steps">
+    <div class="container">
+      <h2 class="section-title section-title--light">Commander, c'est <em>simple</em></h2>
+      <div class="steps__grid">
+        <div class="step"><span class="step__num">1</span><i class="fa-solid fa-basket-shopping"></i><h3>Choisissez vos plats</h3><p>Ajoutez attiéké, chawarma, jus... au panier en un clic.</p></div>
+        <div class="step"><span class="step__num">2</span><i class="fa-solid fa-clipboard-list"></i><h3>Validez le panier</h3><p>Indiquez nom, quartier et mode retrait ou livraison.</p></div>
+        <div class="step"><span class="step__num">3</span><i class="fa-brands fa-whatsapp"></i><h3>Envoyez sur WhatsApp</h3><p>Votre commande arrive au <strong>0197601568</strong>, on confirme tout de suite.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section class="reviews">
+    <div class="container">
+      <p class="eyebrow eyebrow--center">— Ils nous aiment</p>
+      <h2 class="section-title">Ce que disent nos <em>clients</em></h2>
+      <div class="reviews__grid">
+        <div class="review"><div class="stars">★★★★★</div><p>« L'attiéké poisson est le meilleur que j'ai mangé à Cotonou. Poisson bien frit, alloco parfait. Je commande chaque semaine sur WhatsApp. »</p><strong>— Grâce A. <span>Cotonou</span></strong></div>
+        <div class="review"><div class="stars">★★★★★</div><p>« Chawarma bien garni et jus de gingembre excellent. Service rapide, on sent le fait maison. »</p><strong>— Junior M. <span>Akpakpa</span></strong></div>
+        <div class="review"><div class="stars">★★★★★</div><p>« Riz au gras et jus de baobab au top. Commande WhatsApp très pratique, réponse immédiate. »</p><strong>— Aïcha B. <span>Fidjrossè</span></strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER / CONTACT -->
+  <footer class="footer" id="contact">
+    <div class="container footer__grid">
+      <div class="footer__col footer__col--brand">
+        <div class="header__logo"><span class="logo-img"><img src="ATT.jpeg" alt=""></span><span class="logo-text">Chez <em>Bibi</em> Steinmetz</span></div>
+        <p>Cantine béninoise à Cotonou. Plats familiaux et jus naturels pressés chaque jour. Commandez sur WhatsApp, mangez bien.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/share/1UNjU7PYBx/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/bibisteinmetz1?igsh=YnMxNjMzOW91Y3I0&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@bibisteinmetz24?_r=1&_t=ZS-95FmIN9PRcD" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/2290197601568" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Nous contacter</h4>
+        <ul class="footer__contact-list">
+          <li><i class="fa-solid fa-location-dot"></i><span>Cotonou, Bénin</span></li>
+          <li><i class="fa-solid fa-phone"></i><span><a href="tel:+2290197601568">+229 0197601568</a><br><a href="tel:+2290196175912">+229 0196175912</a></span></li>
+          <li><i class="fa-solid fa-envelope"></i><span><a href="mailto:dam.bibi3@gmail.com">dam.bibi3@gmail.com</a></span></li>
+          <li><i class="fa-regular fa-clock"></i><span>Lun – Sam : 08h00 – 22h00<br>Dim : sur commande</span></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Liens rapides</h4>
+        <ul class="footer__links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#histoire">Notre histoire</a></li>
+          <li><a href="#menu">Menu complet</a></li>
+          <li><a href="#jus">Jus naturels</a></li>
+          <li><a href="#" onclick="openCart();return false;">Mon panier</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Commander</h4>
+        <p class="footer__cta-text">Une petite faim ? Envoyez-nous votre commande, on s'occupe du reste.</p>
+        <a class="btn btn--whatsapp" href="https://wa.me/2290197601568?text=Bonjour%20Chez%20Bibi%20Steinmetz%20!%20Je%20veux%20passer%20une%20commande." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> 0197601568</a>
+        <p class="footer__hours"><i class="fa-solid fa-motorcycle"></i> Retrait & livraison sur Cotonou</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© <span id="year">2026</span> Chez Bibi Steinmetz. Tous droits réservés. · <a href="admin.html" style="opacity:.6">Admin</a></p>
+        <p>Fait avec ❤️ à Cotonou, Bénin</p>
+      </div>
+    </div>
   </footer>
 
-  <!-- Bouton retour en haut -->
-  <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
+  <!-- PANIER DRAWER -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <aside class="cart" id="cartDrawer" aria-label="Panier">
+    <div class="cart__head">
+      <div class="cart__title">
+        <span class="cart__icon"><i class="fa-solid fa-basket-shopping"></i></span>
+        <div><h3>Mon panier</h3><small id="cartHeadCount">0 article</small></div>
+      </div>
+      <button class="cart__close" onclick="closeCart()" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart__steps"><span class="on">1 Articles</span><i class="fa-solid fa-chevron-right"></i><span>2 Infos</span><i class="fa-solid fa-chevron-right"></i><span>3 WhatsApp</span></div>
+    <div class="cart__body">
+      <p class="cart__label"><span>1</span> Vos articles</p>
+      <div class="cart__items" id="cartItems"></div>
+      <p class="cart__label"><span>2</span> Retrait ou livraison ?</p>
+      <div class="cart__mode">
+        <label class="mode-card"><input type="radio" name="mode" value="Retrait" checked onchange="renderCart()"><span class="mode-ico"><i class="fa-solid fa-bag-shopping"></i></span><span class="mode-txt"><strong>Retrait</strong><small>Gratuit • sur place</small></span></label>
+        <label class="mode-card"><input type="radio" name="mode" value="Livraison" onchange="renderCart()"><span class="mode-ico"><i class="fa-solid fa-motorcycle"></i></span><span class="mode-txt"><strong>Livraison</strong><small>+500 F • Cotonou</small></span></label>
+      </div>
+      <div class="cart__totals">
+        <div><span>Sous-total (<b id="nbArticles">0</b> articles)</span><strong id="subTotal">0 F</strong></div>
+        <div><span>Frais de livraison</span><strong id="shipCost">0 F</strong></div>
+        <div class="total"><span>Total à payer</span><strong id="grandTotal">0 F</strong></div>
+      </div>
+      <p class="cart__label"><span>3</span> Où vous joindre ?</p>
+      <div class="cart__form">
+        <label>Nom complet *<input id="cNom" type="text" placeholder="Ex : Aïcha Bah" autocomplete="name"></label>
+        <label>Téléphone *<input id="cTel" type="tel" placeholder="Ex : 0197000000" autocomplete="tel"></label>
+        <label>Quartier / adresse<input id="cAdresse" type="text" placeholder="Ex : Fidjrossè, rue 12"></label>
+        <div class="form-row">
+          <label>Paiement<select id="cPaiement">
+            <option value="Espèces à la livraison">Espèces</option>
+            <option value="MTN Mobile Money">MTN MoMo</option>
+            <option value="Moov Money">Moov Money</option>
+            <option value="Celtis">Celtis</option>
+          </select></label>
+        </div>
+        <label>Note<textarea id="cNote" rows="2" placeholder="Ex : sans piment, jus bien glacé..."></textarea></label>
+      </div>
+      <p class="cart__hint"><i class="fa-brands fa-whatsapp"></i> La commande s'ouvre dans WhatsApp vers le <strong>0197601568</strong>. Vérifiez puis appuyez sur Envoyer.</p>
+      <button class="btn btn--ghost btn--block" onclick="viderPanier()"><i class="fa-solid fa-trash-can"></i> Vider le panier</button>
+    </div>
+    <div class="cart__cta">
+      <div class="cart__cta-total"><small>Total</small><strong id="ctaTotal">0 F</strong></div>
+      <button class="btn btn--whatsapp btn--big" onclick="validerCommande()"><i class="fa-brands fa-whatsapp"></i> Commander</button>
+    </div>
+  </aside>
 
-  <!-- ========================================
-       SCRIPTS
-  ======================================== -->
-  <script>
+  <!-- Boutons flottants -->
+  <button class="scroll-top" id="scrollTop" aria-label="Retour en haut"><i class="fa-solid fa-arrow-up"></i></button>
+  <button class="cart-fab" id="cartFab" onclick="openCart()" aria-label="Ouvrir le panier"><i class="fa-solid fa-bag-shopping"></i><span id="fabCount">0</span></button>
+  <a class="wa-fab" href="https://wa.me/2290197601568?text=Bonjour%20Chez%20Bibi%20Steinmetz%20!%20Je%20veux%20passer%20une%20commande." target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
-    /* --- Hamburger mobile --- */
-    const hamburger = document.getElementById('hamburger');
-    const mainNav   = document.getElementById('mainNav');
-    hamburger.addEventListener('click', () => {
-      mainNav.classList.toggle('is-open');
-      hamburger.classList.toggle('is-active');
+  <div class="toast" id="toast"></div>
+
+<script src="menu-data.js"></script>
+<script>
+let BIBI_SETTINGS = (typeof loadSettings === 'function') ? loadSettings() : { deliveryFee: 500, waNumber: '2290197601568', displayNumber: '0197601568' };
+let WA_NUMBER = BIBI_SETTINGS.waNumber || '2290197601568';
+let DELIVERY_FEE = parseInt(BIBI_SETTINGS.deliveryFee, 10) || 500;
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem('bibi_cart') || '{}'); } catch(e){ cart = {}; }
+
+function getCatalogue(){
+  const map = {};
+  document.querySelectorAll('.menu-card').forEach(c=>{
+    const img = c.querySelector('img');
+    map[c.dataset.id] = { id:c.dataset.id, nom:c.dataset.nom, prix:parseInt(c.dataset.prix,10)||0, img: img ? img.getAttribute('src') : '' };
+  });
+  return map;
+}
+function save(){ try{ localStorage.setItem('bibi_cart', JSON.stringify(cart)); }catch(e){} }
+function cartQty(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function cartSubtotal(){
+  const cat = getCatalogue(); let s=0;
+  for(const id in cart){ if(cat[id]) s += cat[id].prix * cart[id]; }
+  return s;
+}
+function getMode(){ const r=document.querySelector('input[name="mode"]:checked'); return r?r.value:'Retrait'; }
+function fmt(n){ return n.toLocaleString('fr-FR') + ' F'; }
+
+function addToCart(id, qty=1){
+  const cat = getCatalogue();
+  if(!cat[id]) return;
+  cart[id] = (cart[id]||0) + qty;
+  save(); renderCart();
+  toast(cat[id].nom + ' ajouté au panier');
+  openCart();
+}
+function commanderDirect(id){
+  const cat = getCatalogue();
+  const p = cat[id]; if(!p) return;
+  const msg = 'Bonjour CHEZ BIBI STEINMETZ !\nJe voudrais commander :\n• 1x ' + p.nom + ' (' + fmt(p.prix) + ')\n\nMerci de me confirmer la disponibilité.';
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+}
+function changeQty(id, d){
+  cart[id] = (cart[id]||0) + d;
+  if(cart[id] <= 0) delete cart[id];
+  save(); renderCart();
+}
+function removeItem(id){ delete cart[id]; save(); renderCart(); }
+function viderPanier(){ cart = {}; save(); renderCart(); }
+
+function renderCart(){
+  const cat = getCatalogue();
+  const box = document.getElementById('cartItems');
+  const ids = Object.keys(cart).filter(id=>cat[id]);
+  const mode = getMode();
+  const sub = cartSubtotal();
+  const ship = (mode === 'Livraison' && sub > 0) ? DELIVERY_FEE : 0;
+  const qty = cartQty();
+
+  document.getElementById('cartCount').textContent = qty;
+  document.getElementById('fabCount').textContent = qty;
+  document.getElementById('cartHeadCount').textContent = qty + (qty > 1 ? ' articles' : ' article');
+  document.getElementById('nbArticles').textContent = qty;
+  document.getElementById('subTotal').textContent = fmt(sub);
+  document.getElementById('shipCost').textContent = ship === 0 ? 'Gratuit' : fmt(ship);
+  document.getElementById('grandTotal').textContent = fmt(sub + ship);
+  document.getElementById('ctaTotal').textContent = fmt(sub + ship);
+
+  if(ids.length === 0){
+    box.innerHTML = '<div class="cart-empty"><i class="fa-solid fa-basket-shopping"></i><p><strong>Panier vide</strong><br>Ajoutez un bon plat du menu !</p><a href="#menu" class="btn btn--primary" onclick="closeCart()">Voir le menu</a></div>';
+    return;
+  }
+  box.innerHTML = ids.map(id=>{
+    const p = cat[id], q = cart[id];
+    return '<div class="cart-item">'
+      + (p.img ? '<img class="cart-item__img" src="' + p.img + '" alt="">' : '')
+      + '<div class="cart-item__main"><div class="cart-item__top"><strong>' + p.nom + '</strong>'
+      + '<button class="cart-item__rm" onclick="removeItem(\'' + id + '\')" aria-label="Retirer"><i class="fa-solid fa-trash-can"></i></button></div>'
+      + '<span class="cart-item__unit">' + fmt(p.prix) + ' / portion</span>'
+      + '<div class="cart-item__bottom"><div class="qty"><button onclick="changeQty(\'' + id + '\',-1)" aria-label="Moins">−</button><span>' + q + '</span><button onclick="changeQty(\'' + id + '\',1)" aria-label="Plus">+</button></div>'
+      + '<span class="cart-item__line">' + fmt(p.prix*q) + '</span></div></div>'
+      + '</div>';
+  }).join('');
+}
+
+function validerCommande(){
+  const cat = getCatalogue();
+  const ids = Object.keys(cart).filter(id=>cat[id]);
+  if(ids.length === 0){ toast('Votre panier est vide'); return; }
+  const nom = document.getElementById('cNom').value.trim();
+  const tel = document.getElementById('cTel').value.trim();
+  const adresse = document.getElementById('cAdresse').value.trim();
+  const paiement = document.getElementById('cPaiement').value;
+  const note = document.getElementById('cNote').value.trim();
+  const mode = getMode();
+  if(!nom || !tel){ toast('Ajoutez votre nom et téléphone'); document.getElementById(!nom?'cNom':'cTel').focus(); return; }
+
+  const sub = cartSubtotal();
+  const ship = (mode === 'Livraison') ? DELIVERY_FEE : 0;
+  const lines = ids.map((id,i)=> (i+1) + '. ' + cart[id] + 'x ' + cat[id].nom + ' (' + fmt(cat[id].prix) + ') = ' + fmt(cat[id].prix*cart[id]));
+  let msg = 'Bonjour CHEZ BIBI STEINMETZ ! Je veux commander :\n\n' + lines.join('\n')
+    + '\n\nSous-total : ' + fmt(sub)
+    + '\nLivraison (' + mode + ') : ' + fmt(ship)
+    + '\nTOTAL : ' + fmt(sub+ship)
+    + '\n\nNom : ' + nom
+    + '\nTéléphone : ' + tel
+    + '\nMode : ' + mode
+    + (adresse ? '\nAdresse : ' + adresse : '')
+    + '\nPaiement : ' + paiement
+    + (note ? '\nNote : ' + note : '')
+    + '\n\nMerci !';
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+  toast('Commande envoyée vers WhatsApp');
+}
+
+function openCart(){ document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').classList.add('show'); renderCart(); }
+function closeCart(){ document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('show'); }
+
+let toastTimer;
+function toast(t){ const el=document.getElementById('toast'); el.textContent=t; el.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove('show'),2200); }
+
+/* Filtres + recherche */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const searchInput = document.getElementById('searchInput');
+let activeFilter = 'all';
+function applyFilters(){
+  const cards = document.querySelectorAll('.menu-card');
+  const q = (searchInput.value||'').toLowerCase().trim();
+  let visible = 0;
+  cards.forEach(c=>{
+    if(c.style.display === 'none' && c.dataset.hiddenByAdmin === '1') return;
+    const okF = (activeFilter==='all' || c.dataset.category===activeFilter);
+    const okQ = (!q || (c.dataset.nom+' '+c.textContent).toLowerCase().includes(q));
+    const show = okF && okQ && c.dataset.hiddenByAdmin !== '1';
+    c.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+  document.getElementById('menuEmpty').hidden = visible !== 0;
+}
+filterBtns.forEach(b=>b.addEventListener('click',()=>{ filterBtns.forEach(x=>x.classList.remove('filter-btn--active')); b.classList.add('filter-btn--active'); activeFilter=b.dataset.filter; applyFilters(); }));
+searchInput.addEventListener('input', applyFilters);
+
+/* Header / nav / divers */
+document.getElementById('openCartBtn').addEventListener('click', openCart);
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('mainNav').classList.toggle('is-open'); this.classList.toggle('is-active'); });
+document.querySelectorAll('#mainNav a').forEach(a=>a.addEventListener('click',()=>{ document.getElementById('mainNav').classList.remove('is-open'); }));
+window.addEventListener('scroll', ()=>{
+  document.getElementById('header').classList.toggle('header--scrolled', window.scrollY>10);
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY>400);
+});
+document.getElementById('scrollTop').addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+document.getElementById('year').textContent = new Date().getFullYear();
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeCart(); });
+
+/* --- Applique les modifs faites dans admin.html (prix, descriptions, photos, livraison, WhatsApp) --- */
+function catLabel(cat){
+  return cat==='classique'?'Classique':cat==='fastfood'?'Fast-food':cat==='jus'?'Jus naturel':cat==='salade'?'Salade':cat;
+}
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function buildCard(d){
+  const art = document.createElement('article');
+  art.className = 'menu-card';
+  art.dataset.category = d.cat; art.dataset.id = d.id; art.dataset.nom = d.nom; art.dataset.prix = d.prix;
+  const badge = d.badge ? '<span class="menu-card__badge' + (d.cat==='jus'?' badge--green':'') + '">' + esc(d.badge) + '</span>' : '';
+  art.innerHTML = '<div class="menu-card__img-wrap">' + badge + '<img src="' + esc(d.img) + '" alt="' + esc(d.nom) + '" class="menu-card__img" loading="lazy"></div>'
+    + '<div class="menu-card__body"><div class="menu-card__meta"><span class="menu-card__rating"><i class="fa-solid fa-star"></i> ' + esc(d.rating||'4.5') + '</span><span class="menu-card__cat">' + esc(catLabel(d.cat)) + '</span></div>'
+    + '<h3>' + esc(d.nom) + '</h3><p>' + esc(d.desc||'') + '</p>'
+    + '<div class="menu-card__foot"><span class="price">' + Number(d.prix).toLocaleString('fr-FR') + ' <small>FCFA</small></span>'
+    + '<div class="card-actions"><button class="btn-add" onclick="addToCart(\'' + d.id + '\')">Ajouter <i class="fa-solid fa-plus"></i></button>'
+    + '<button class="btn-wa" onclick="commanderDirect(\'' + d.id + '\')" aria-label="Commander sur WhatsApp"><i class="fa-brands fa-whatsapp"></i></button></div></div></div>';
+  return art;
+}
+function applyAdminData(){
+  try{
+    if(typeof loadDishes !== 'function') return;
+    const dishes = loadDishes();
+    const grid = document.getElementById('menuGrid');
+    const byId = {};
+    dishes.forEach(d=>{ byId[d.id]=d; });
+    // 1) Met à jour les cartes existantes + masque celles désactivées
+    document.querySelectorAll('.menu-card').forEach(card=>{
+      const d = byId[card.dataset.id];
+      if(!d){ return; }
+      if(d.visible === false){ card.dataset.hiddenByAdmin='1'; card.style.display='none'; return; }
+      card.dataset.hiddenByAdmin='';
+      card.dataset.nom = d.nom; card.dataset.prix = d.prix; card.dataset.category = d.cat;
+      const img = card.querySelector('.menu-card__img'); if(img && d.img) img.src = d.img;
+      const h3 = card.querySelector('h3'); if(h3) h3.textContent = d.nom;
+      const p = card.querySelector('.menu-card__body p'); if(p) p.textContent = d.desc || '';
+      const price = card.querySelector('.price'); if(price) price.innerHTML = Number(d.prix).toLocaleString('fr-FR') + ' <small>FCFA</small>';
+      const catEl = card.querySelector('.menu-card__cat'); if(catEl) catEl.textContent = catLabel(d.cat);
+      let badge = card.querySelector('.menu-card__badge');
+      if(d.badge){ if(!badge){ const w=card.querySelector('.menu-card__img-wrap'); badge=document.createElement('span'); badge.className='menu-card__badge'; w.prepend(badge);} badge.textContent=d.badge; badge.style.display=''; }
+      else if(badge){ badge.style.display='none'; }
     });
-
-    /* --- Header sticky shadow --- */
-    window.addEventListener('scroll', () => {
-      document.getElementById('header').classList.toggle('header--scrolled', window.scrollY > 50);
+    // 2) Ajoute les nouveaux plats créés dans l'admin
+    dishes.forEach(d=>{
+      if(d.visible === false) return;
+      if(!document.querySelector('.menu-card[data-id="'+d.id+'"]')){
+        const anchor = document.getElementById('jus');
+        const el = buildCard(d);
+        if(anchor && anchor.parentNode === grid) grid.insertBefore(el, anchor);
+        else grid.appendChild(el);
+      }
     });
-
-    /* --- Filtres du menu --- */
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const menuCards  = document.querySelectorAll('.menu-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('filter-btn--active'));
-        btn.classList.add('filter-btn--active');
-        const filter = btn.dataset.filter;
-        menuCards.forEach(card => {
-          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-        });
-      });
+    // 3) Réglages : livraison + WhatsApp
+    const s = (typeof loadSettings==='function') ? loadSettings() : {};
+    WA_NUMBER = s.waNumber || WA_NUMBER;
+    DELIVERY_FEE = parseInt(s.deliveryFee,10) || 0;
+    const disp = s.displayNumber || '0197601568';
+    document.querySelectorAll('.cart__mode label:last-child, .cart__mode .mode-txt small:last-child').forEach(()=>{});
+    const modeSmall = document.querySelector('.mode-card:last-child .mode-txt small');
+    if(modeSmall) modeSmall.textContent = '+' + DELIVERY_FEE.toLocaleString('fr-FR') + ' F • Cotonou';
+    const modeLabel = document.querySelector('.cart__mode');
+    document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
+      const href = a.getAttribute('href');
+      if(href && href.includes('wa.me/')) a.setAttribute('href', href.replace(/wa\.me\/\d+/, 'wa.me/' + WA_NUMBER));
     });
-
-    /* --- Commander sur WhatsApp avec nom du plat --- */
-    function commanderWhatsapp(el) {
-      const carte = el.closest('.menu-card');
-      const nom   = carte.dataset.nom || 'ce plat';
-      const msg   = `Bonjour, je voudrais commander : *${nom}*`;
-      const url   = `https://wa.me/2290197601568?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank');
-    }
-
-    /* --- Scroll to top --- */
-    const scrollTopBtn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', () => {
-      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
-    });
-    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  </script>
-
+    document.querySelectorAll('.header__phone span').forEach(el=>{ el.textContent = disp; });
+    const topWa = document.querySelector('.topbar a');
+    if(topWa) topWa.innerHTML = '<i class="fa-brands fa-whatsapp"></i> ' + esc(disp);
+  }catch(e){ console.warn('admin data:', e); }
+}
+applyAdminData();
+renderCart();
+applyFilters();
+</script>
 </body>
 </html>

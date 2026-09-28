@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Chez Bibi Steinmetz</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e63a2e;--green:#1da851;--dark:#141210;--bg:#f4efe8;--card:#fff;--bd:#e7dccf;--mut:#8a837d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#3d3a37}
+header{background:var(--dark);color:#fff;padding:.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+header h1{font-family:'Playfair Display',serif;font-size:1.2rem}
+header h1 em{color:var(--red);font-style:normal}
+header a{color:#fff;background:rgba(255,255,255,.12);padding:.5rem 1rem;border-radius:50px;font-size:.85rem;font-weight:600;text-decoration:none}
+header a:hover{background:var(--red)}
+.wrap{max-width:1000px;margin:0 auto;padding:1.2rem}
+.notice{background:#fff7e6;border:1px solid #f0d48a;border-radius:12px;padding:.7rem 1rem;font-size:.83rem;margin-bottom:1rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:1rem}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:.9rem;text-align:center}
+.stat strong{font-size:1.4rem;display:block;color:var(--dark)}
+.stat span{font-size:.78rem;color:var(--mut)}
+.tabs{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.tabs button{border:1.5px solid var(--bd);background:#fff;border-radius:50px;padding:.55rem 1.2rem;font-weight:700;cursor:pointer;font-size:.88rem}
+.tabs button.on{background:var(--dark);color:#fff;border-color:var(--dark)}
+.panel{display:none}.panel.on{display:block}
+.toolbar{display:flex;gap:.6rem;margin-bottom:.9rem;flex-wrap:wrap}
+.toolbar input,.toolbar select{padding:.6rem .9rem;border-radius:12px;border:1.5px solid var(--bd);font-family:inherit;font-size:.88rem;background:#fff}
+.dish{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:.8rem;display:flex;gap:.8rem;align-items:center;margin-bottom:.7rem}
+.dish img{width:74px;height:74px;border-radius:12px;object-fit:cover;flex-shrink:0;background:#eee}
+.dish .info{flex:1;min-width:0}
+.dish .info strong{color:var(--dark);font-size:.95rem}
+.dish .meta{font-size:.76rem;color:var(--mut);margin:.15rem 0}
+.dish .desc{font-size:.8rem;color:#5b5651;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pill{display:inline-block;font-size:.7rem;font-weight:800;padding:.15rem .55rem;border-radius:20px;background:#f1e9dd;color:#6b6259;margin-right:.3rem}
+.pill.off{background:#fde2e0;color:var(--red)}
+.pill.price{background:#e8f9ef;color:var(--green)}
+.actions{display:flex;gap:.4rem;flex-shrink:0}
+.actions button{border:none;border-radius:10px;padding:.5rem .7rem;cursor:pointer;font-size:.8rem;font-weight:700}
+.b-edit{background:#141210;color:#fff}.b-eye{background:#f1e9dd;color:#6b6259}.b-del{background:#fde2e0;color:var(--red)}
+.card{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:1.2rem;margin-bottom:1rem}
+.card h2{font-size:1.05rem;color:var(--dark);margin-bottom:.9rem}
+label{display:flex;flex-direction:column;gap:.3rem;font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:.7rem}
+label input,label select,label textarea{font-weight:400;font-size:.9rem;padding:.65rem .8rem;border-radius:10px;border:1.5px solid var(--bd);font-family:inherit;width:100%}
+label input:focus,label select,label textarea:focus{outline:none;border-color:var(--red)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.btn{border:none;border-radius:50px;padding:.75rem 1.4rem;font-weight:800;cursor:pointer;font-size:.9rem;display:inline-flex;align-items:center;gap:.5rem}
+.btn-red{background:var(--red);color:#fff}.btn-dark{background:var(--dark);color:#fff}.btn-green{background:var(--green);color:#fff}.btn-ghost{background:#fff;border:1.5px solid var(--bd);color:var(--dark)}
+.preview{width:120px;height:120px;border-radius:14px;object-fit:cover;border:2px dashed var(--bd);background:#faf6f0}
+.danger{border:1px solid #f3b8b3;background:#fff5f4;border-radius:14px;padding:1rem;margin-top:1rem}
+#lock{position:fixed;inset:0;background:var(--dark);z-index:100;display:flex;align-items:center;justify-content:center;padding:1rem}
+#lock.off{display:none}
+.lockbox{background:#fff;border-radius:20px;padding:2rem;max-width:360px;width:100%;text-align:center}
+.lockbox h2{font-family:'Playfair Display',serif;margin-bottom:.4rem}
+.lockbox p{font-size:.85rem;color:var(--mut);margin-bottom:1rem}
+.lockbox input{width:100%;padding:.7rem;border-radius:12px;border:1.5px solid var(--bd);margin-bottom:.7rem;font-size:1rem;text-align:center}
+#toast{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:.7rem 1.3rem;border-radius:50px;font-size:.85rem;font-weight:600;opacity:0;transition:.25s;z-index:200}
+#toast.show{opacity:1}
+@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}.dish{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+
+<div id="lock">
+  <div class="lockbox">
+    <h2>Admin <em style="color:var(--red)">Bibi</em></h2>
+    <p>Entrez le mot de passe pour gérer le menu.<br>(défaut : <b>bibi123</b>)</p>
+    <input type="password" id="passInput" placeholder="Mot de passe">
+    <button class="btn btn-red" style="width:100%;justify-content:center" onclick="unlock()"><i class="fa-solid fa-lock-open"></i> Entrer</button>
+    <p style="margin-top:.8rem"><a href="index.html">← Retour au site</a></p>
+  </div>
+</div>
+
+<header>
+  <h1>Admin — Chez <em>Bibi</em> Steinmetz</h1>
+  <a href="index.html"><i class="fa-solid fa-eye"></i> Voir le site</a>
+</header>
+
+<div class="wrap">
+  <div class="notice"><i class="fa-solid fa-circle-info"></i> Les modifications sont enregistrées dans <b>ce navigateur</b> et s'affichent aussitôt sur la page du site. Pour que tout le monde les voie en ligne, il faudra ensuite publier le site (demandez-moi).</div>
+
+  <div class="stats">
+    <div class="stat"><strong id="stNb">0</strong><span>Plats au menu</span></div>
+    <div class="stat"><strong id="stVis">0</strong><span>Plats visibles</span></div>
+    <div class="stat"><strong id="stLiv">500 F</strong><span>Frais de livraison</span></div>
+  </div>
+
+  <div class="tabs">
+    <button id="tab1" class="on" onclick="showTab('plats')">🍽 Plats</button>
+    <button id="tab2" onclick="showTab('ajout')">➕ Ajouter / Modifier</button>
+    <button id="tab3" onclick="showTab('regl')">⚙️ Réglages</button>
+  </div>
+
+  <div class="panel on" id="p-plats">
+    <div class="toolbar">
+      <input id="q" placeholder="🔍 Rechercher..." oninput="renderList()" style="flex:1;min-width:160px">
+      <select id="fcat" onchange="renderList()">
+        <option value="all">Toutes catégories</option>
+        <option value="classique">Classiques</option>
+        <option value="fastfood">Fast-food</option>
+        <option value="jus">Jus naturels</option>
+        <option value="salade">Salade</option>
+      </select>
+    </div>
+    <div id="list"></div>
+  </div>
+
+  <div class="panel" id="p-ajout">
+    <div class="card">
+      <h2 id="formTitle">➕ Nouveau plat</h2>
+      <input type="hidden" id="fId">
+      <label>Nom du plat *<input id="fNom" placeholder="Ex : Yassa poulet"></label>
+      <div class="row2">
+        <label>Catégorie<select id="fCat">
+          <option value="classique">Classique béninois</option>
+          <option value="fastfood">Fast-food</option>
+          <option value="jus">Jus naturel</option>
+          <option value="salade">Salade</option>
+        </select></label>
+        <label>Prix (FCFA) *<input id="fPrix" type="number" min="0" step="50" placeholder="Ex : 2000"></label>
+      </div>
+      <div class="row2">
+        <label>Badge (optionnel)<input id="fBadge" placeholder="Ex : Nouveau, Populaire"></label>
+        <label>Note (ex : 4.5)<input id="fRating" placeholder="4.5"></label>
+      </div>
+      <label>Description / bio du plat<textarea id="fDesc" rows="3" placeholder="Décrivez le plat, les ingrédients..."></textarea></label>
+      <label>Photo du plat
+        <input type="file" id="fPhoto" accept="image/*">
+      </label>
+      <div style="display:flex;gap:.8rem;align-items:center;margin-bottom:.8rem;flex-wrap:wrap">
+        <img id="fPreview" class="preview" alt="Aperçu">
+        <div style="font-size:.8rem;color:var(--mut)">Choisissez une photo depuis votre téléphone / PC.<br>Elle est compressée automatiquement.<br>Ou gardez la photo actuelle.</div>
+      </div>
+      <label>Ou nom de fichier image déjà sur le site<input id="fImgName" placeholder="Ex : ATT.jpeg"></label>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <button class="btn btn-green" onclick="saveDish()"><i class="fa-solid fa-floppy-disk"></i> Enregistrer</button>
+        <button class="btn btn-ghost" onclick="resetForm()">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="p-regl">
+    <div class="card">
+      <h2>⚙️ Livraison & WhatsApp</h2>
+      <label>Frais de livraison (FCFA)<input id="sFee" type="number" min="0" step="100"></label>
+      <label>Numéro WhatsApp (format international, sans +)<input id="sWa" placeholder="2290197601568"></label>
+      <label>Numéro affiché sur le site<input id="sDisp" placeholder="0197601568"></label>
+      <label>Mot de passe admin<input id="sPass"></label>
+      <button class="btn btn-green" onclick="saveSettingsForm()"><i class="fa-solid fa-floppy-disk"></i> Enregistrer les réglages</button>
+    </div>
+    <div class="card">
+      <h2>💾 Sauvegarde</h2>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <button class="btn btn-dark" onclick="exportJSON()"><i class="fa-solid fa-download"></i> Exporter</button>
+        <label class="btn btn-ghost" style="margin:0;cursor:pointer"><i class="fa-solid fa-upload"></i> Importer<input type="file" id="impFile" accept=".json" style="display:none" onchange="importJSON(event)"></label>
+      </div>
+    </div>
+    <div class="danger">
+      <strong>Zone dangereuse</strong>
+      <p style="font-size:.83rem;margin:.4rem 0 .8rem">Tout effacer et revenir au menu d'origine.</p>
+      <button class="btn btn-red" onclick="doReset()"><i class="fa-solid fa-triangle-exclamation"></i> Réinitialiser le menu</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+<script src="menu-data.js"></script>
+<script>
+let dishes = loadDishes();
+let settings = loadSettings();
+let editPhotoData = '';
+
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+function unlock(){
+  const v = document.getElementById('passInput').value;
+  if(v === (settings.adminPass || 'bibi123')){ document.getElementById('lock').classList.add('off'); sessionStorage.setItem('bibi_admin_ok','1'); }
+  else toast('Mot de passe incorrect');
+}
+if(sessionStorage.getItem('bibi_admin_ok')==='1') document.getElementById('lock').classList.add('off');
+document.getElementById('passInput').addEventListener('keydown',e=>{ if(e.key==='Enter') unlock(); });
+
+function showTab(t){
+  ['plats','ajout','regl'].forEach(x=>document.getElementById('p-'+x).classList.remove('on'));
+  document.getElementById('p-'+t).classList.add('on');
+  ['tab1','tab2','tab3'].forEach(x=>document.getElementById(x).classList.remove('on'));
+  document.getElementById(t==='plats'?'tab1':t==='ajout'?'tab2':'tab3').classList.add('on');
+}
+function catL(c){ return c==='classique'?'Classique':c==='fastfood'?'Fast-food':c==='jus'?'Jus':c==='salade'?'Salade':c; }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+function renderList(){
+  const q = (document.getElementById('q').value||'').toLowerCase();
+  const fc = document.getElementById('fcat').value;
+  const box = document.getElementById('list');
+  const vis = dishes.filter(d=>d.visible!==false).length;
+  document.getElementById('stNb').textContent = dishes.length;
+  document.getElementById('stVis').textContent = vis;
+  document.getElementById('stLiv').textContent = Number(settings.deliveryFee||0).toLocaleString('fr-FR') + ' F';
+  const arr = dishes.filter(d=>{
+    const okC = fc==='all'||d.cat===fc;
+    const okQ = !q||(d.nom+' '+(d.desc||'')).toLowerCase().includes(q);
+    return okC&&okQ;
+  });
+  if(!arr.length){ box.innerHTML='<div class="card">Aucun plat trouvé.</div>'; return; }
+  box.innerHTML = arr.map(d=>
+    '<div class="dish"><img src="'+d.img+'" alt="" onerror="this.src=\'ATT.jpeg\'">'
+    +'<div class="info"><strong>'+esc(d.nom)+'</strong>'
+    +'<div class="meta"><span class="pill price">'+Number(d.prix).toLocaleString('fr-FR')+' F</span><span class="pill">'+catL(d.cat)+'</span>'
+    +(d.visible===false?'<span class="pill off">Masqué</span>':'<span class="pill" style="background:#e8f9ef;color:#1da851">Visible</span>')+'</div>'
+    +'<div class="desc">'+esc(d.desc||'—')+'</div></div>'
+    +'<div class="actions"><button class="b-edit" onclick="editDish(\''+d.id+'\')"><i class="fa-solid fa-pen"></i></button>'
+    +'<button class="b-eye" onclick="toggleVis(\''+d.id+'\')"><i class="fa-solid fa-eye"></i></button>'
+    +'<button class="b-del" onclick="delDish(\''+d.id+'\')"><i class="fa-solid fa-trash"></i></button></div></div>'
+  ).join('');
+}
+
+function slug(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,30) || 'plat'; }
+
+document.getElementById('fPhoto').addEventListener('change', e=>{
+  const f = e.target.files[0]; if(!f) return;
+  compressImage(f, img=>{
+    editPhotoData = img;
+    document.getElementById('fPreview').src = img;
+    document.getElementById('fImgName').value = '';
+  });
+});
+function compressImage(file, cb){
+  const r = new FileReader();
+  r.onload = ev=>{
+    const img = new Image();
+    img.onload = ()=>{
+      const max = 700;
+      let w = img.width, h = img.height;
+      if(Math.max(w,h) > max){ const k = max/Math.max(w,h); w=Math.round(w*k); h=Math.round(h*k); }
+      const c = document.createElement('canvas'); c.width=w; c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      cb(c.toDataURL('image/jpeg', .82));
+    };
+    img.src = ev.target.result;
+  };
+  r.readAsDataURL(file);
+}
+
+function resetForm(){
+  document.getElementById('fId').value=''; document.getElementById('fNom').value='';
+  document.getElementById('fPrix').value=''; document.getElementById('fBadge').value='';
+  document.getElementById('fRating').value='4.5'; document.getElementById('fDesc').value='';
+  document.getElementById('fImgName').value=''; document.getElementById('fPhoto').value='';
+  document.getElementById('fPreview').src=''; editPhotoData='';
+  document.getElementById('formTitle').textContent='➕ Nouveau plat';
+}
+function saveDish(){
+  const id0 = document.getElementById('fId').value;
+  const nom = document.getElementById('fNom').value.trim();
+  const prix = parseInt(document.getElementById('fPrix').value,10);
+  if(!nom || isNaN(prix)){ toast('Nom et prix obligatoires'); return; }
+  const cat = document.getElementById('fCat').value;
+  const badge = document.getElementById('fBadge').value.trim();
+  const rating = document.getElementById('fRating').value.trim() || '4.5';
+  const desc = document.getElementById('fDesc').value.trim();
+  const imgName = document.getElementById('fImgName').value.trim();
+  let img = editPhotoData || imgName || '';
+  if(id0){
+    const d = dishes.find(x=>x.id===id0); if(!d) return;
+    d.nom=nom; d.cat=cat; d.prix=prix; d.badge=badge; d.rating=rating; d.desc=desc;
+    if(img) d.img=img;
+    toast('Plat modifié ✔');
+  }else{
+    if(!img) img='ATT.jpeg';
+    dishes.push({ id: slug(nom)+'-'+Date.now().toString(36), nom, cat, prix, badge, rating, desc, img, visible:true });
+    toast('Plat ajouté ✔');
+  }
+  saveDishes(dishes); resetForm(); renderList(); showTab('plats');
+}
+function editDish(id){
+  const d = dishes.find(x=>x.id===id); if(!d) return;
+  document.getElementById('fId').value=d.id; document.getElementById('fNom').value=d.nom;
+  document.getElementById('fCat').value=d.cat; document.getElementById('fPrix').value=d.prix;
+  document.getElementById('fBadge').value=d.badge||''; document.getElementById('fRating').value=d.rating||'4.5';
+  document.getElementById('fDesc').value=d.desc||'';
+  document.getElementById('fPreview').src=d.img||''; editPhotoData='';
+  document.getElementById('fImgName').value=(d.img||'').startsWith('data:')?'':(d.img||'');
+  document.getElementById('formTitle').textContent='✏️ Modifier : '+d.nom;
+  showTab('ajout'); window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleVis(id){
+  const d = dishes.find(x=>x.id===id); if(!d) return;
+  d.visible = (d.visible===false)?true:false;
+  saveDishes(dishes); renderList();
+}
+function delDish(id){
+  const d = dishes.find(x=>x.id===id);
+  if(!confirm('Supprimer « '+(d?d.nom:id)+' » ?')) return;
+  dishes = dishes.filter(x=>x.id!==id);
+  saveDishes(dishes); renderList(); toast('Plat supprimé');
+}
+function fillSettings(){
+  document.getElementById('sFee').value=settings.deliveryFee;
+  document.getElementById('sWa').value=settings.waNumber;
+  document.getElementById('sDisp').value=settings.displayNumber;
+  document.getElementById('sPass').value=settings.adminPass;
+}
+function saveSettingsForm(){
+  settings.deliveryFee = parseInt(document.getElementById('sFee').value,10)||0;
+  settings.waNumber = document.getElementById('sWa').value.replace(/\D/g,'')||'2290197601568';
+  settings.displayNumber = document.getElementById('sDisp').value.trim()||'0197601568';
+  settings.adminPass = document.getElementById('sPass').value.trim()||'bibi123';
+  saveSettings(settings); renderList(); toast('Réglages enregistrés ✔');
+}
+function doReset(){
+  if(!confirm('Tout réinitialiser ? Vos ajouts seront perdus.')) return;
+  resetMenu(); dishes=loadDishes(); settings=loadSettings();
+  resetForm(); fillSettings(); renderList(); toast('Menu réinitialisé');
+}
+function exportJSON(){
+  const blob = new Blob([JSON.stringify({dishes,settings},null,2)],{type:'application/json'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='bibi-menu.json'; a.click();
+}
+function importJSON(e){
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ev=>{
+    try{
+      const o = JSON.parse(ev.target.result);
+      if(o.dishes) dishes=o.dishes;
+      if(o.settings) settings=Object.assign({},settings,o.settings);
+      saveDishes(dishes); saveSettings(settings); fillSettings(); renderList(); toast('Import réussi ✔');
+    }catch(err){ toast('Fichier invalide'); }
+  };
+  r.readAsText(f);
+}
+fillSettings(); renderList();
+</script>
+</body>
+</html>
